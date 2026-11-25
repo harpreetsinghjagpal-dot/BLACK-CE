@@ -96,6 +96,7 @@ h2{font-size:20px;margin:6px 0 10px;line-height:1.25}
 .ctxt{width:100%;font:inherit;font-size:16px;border-radius:12px;border:1px solid var(--line);background:#0c1014;color:var(--ink);padding:10px 12px;min-height:70px;resize:vertical;margin-top:6px}
 .csend{font:inherit;font-weight:700;min-height:46px;padding:0 18px;border-radius:12px;border:0;background:var(--ice);color:#111;cursor:pointer;margin-top:8px}.csend:disabled{opacity:.5}
 .ctxt:focus-visible,.csend:focus-visible{outline:3px solid var(--ice);outline-offset:2px}
+#gpsrb{margin:12px -14px -12px;border-radius:0 0 14px 14px;border-top:2px dashed #2f7cf6}
 #map.lm{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr)}#map.lm #svg{display:none}
 #lwrap{position:relative;height:340px;border-radius:12px;overflow:hidden}#lmap{position:absolute;inset:0;background:#0c1014}
 #mcover{position:absolute;inset:0;z-index:500;background:transparent;border:0;cursor:pointer}
@@ -291,7 +292,22 @@ function prov(c){const p=D.p[c];cur=c;$("back").hidden=false;drawProv(c);
 const VC={r:{k:"r4",a:"vR",b:"vRs"},y:{k:"r2",a:"vY",b:"vYs"},g:{k:"r1",a:"vG",b:"vGs"}};for(const v of Object.values(VC)){Object.defineProperty(v,"t",{get:()=>tx(v.a)});Object.defineProperty(v,"s",{get:()=>tx(v.b)})}
 const today=()=>new Date().toLocaleDateString("en-CA");
 let DB=null,USR=null,ME=null,OWNER=false,pubState="loading",pubMsg="",pubMsgK="",busyW=false,selTown=null;
-let VOTES={},MYV={},COMS=[],MYC=[],NAMES={};
+let VOTES={},MYV={},COMS=[],MYC=[],NAMES={},NTF=false;
+// Website backend: public ntfy.sh topic (no sign-in). Messages are kept ~12 hours.
+const NT="https://ntfy.sh/canadian-road-pub-7q3k9x";let NMSG=[];const NSEEN=new Set();
+const myId=()=>{try{let i=localStorage.getItem("cr_id");if(!i){i="d"+Math.random().toString(36).slice(2,10)+Date.now().toString(36);localStorage.setItem("cr_id",i)}return i}catch(e){return "d"+Math.random().toString(36).slice(2,12)}};
+function ntParse(line){try{const e=typeof line==="string"?JSON.parse(line):line;if(!e||e.event!=="message"||NSEEN.has(e.id))return;const m=JSON.parse(e.message);if(!m||typeof m!=="object")return;NSEEN.add(e.id);
+  const o={t:String(m.t),k:String(m.k||"").slice(0,200),id:String(m.id||"").slice(0,40),at:(+e.time||0)*1000};if(!o.id||!o.at)return;
+  if(o.t==="v")o.v=VC[m.v]?m.v:"";else if(o.t==="c"){if(typeof m.txt!=="string"||!o.k)return;o.txt=m.txt.slice(0,300);o.v=VC[m.v]?m.v:""}else if(o.t==="d")o.ca=+m.ca||0;else return;
+  NMSG.push(o)}catch(x){}}
+function ntAgg(){const td=today(),last={},coms=[],dels=new Set();
+  for(const m of NMSG.slice().sort((a,b)=>a.at-b.at)){if(m.t==="v")last[m.id+"\n"+m.k]=m;else if(m.t==="c")coms.push(m);else dels.add(m.id+"\n"+m.ca)}
+  const agg={},mv={};for(const m of Object.values(last)){if(!VC[m.v])continue;const d=new Date(m.at).toLocaleDateString("en-CA");if(d!==td)continue;(agg[m.k]=agg[m.k]||{})[m.v]=(agg[m.k][m.v]||0)+1;if(m.id===ME)mv[m.k]={v:m.v,d,at:m.at}}
+  VOTES=agg;MYV=mv;COMS=coms.filter(c=>!dels.has(c.id+"\n"+c.at)).map(c=>({k:c.k,txt:c.txt,v:c.v,at:c.at,by:c.id})).sort((a,b)=>b.at-a.at);MYC=COMS.filter(c=>c.by===ME)}
+async function ntPoll(){const r=await fetch(NT+"/json?poll=1&since=12h",{cache:"no-store"});if(!r.ok)throw new Error("poll");(await r.text()).split("\n").forEach(l=>l.trim()&&ntParse(l));
+  const cut=Date.now()-13*36e5;NMSG=NMSG.filter(m=>m.at>cut);ntAgg()}
+async function ntSend(o){const r=await fetch(NT,{method:"POST",body:JSON.stringify({...o,id:ME})});if(!r.ok){const e=new Error("send");e.code=r.status===429?"rate":"";throw e}
+  const j=await r.json().catch(()=>null);if(j)ntParse(j);ntAgg()}
 const pubChip=k=>{const v=VOTES[k];if(!v)return"—";return ["r","y","g"].filter(x=>v[x]).map(x=>`<span class="dot" style="--c:var(--${VC[x].k})"></span>${v[x]}`).join(" ")||"—"};
 const ago=ms=>{const m=Math.round((Date.now()-ms)/60000);return m<1?tx("now"):m<60?tx("minAgo",m):m<1440?tx("hrAgo",Math.round(m/60)):tx("dayAgo",Math.round(m/1440))};
 const roadKey=(c,h)=>c+"|hw|"+h.no+"|"+h.name;
@@ -321,22 +337,30 @@ function renderPub(){
   const need=[...ids].filter(i=>!(i in NAMES));
   if(USR&&need.length)USR.profiles(need).then(ps=>{for(const i of need)NAMES[i]=(ps&&ps[i]&&ps[i].name)||"";renderPub()}).catch(()=>{need.forEach(i=>NAMES[i]="")});
 }
-$("view").addEventListener("click",e=>{const rb=e.target.closest(".rb");if(!rb)return;const k=rb.dataset.k;
+function pubClick(e){const rb=e.target.closest(".rb");if(!rb)return;const k=rb.dataset.k;
   const vb=e.target.closest(".vb");if(vb)return vote(k,vb.dataset.v);
   if(e.target.closest(".csend")){const ta=rb.querySelector(".ctxt");return comment(k,rb.dataset.mine,ta)}
-  const d=e.target.closest(".del");if(d)return delCom(d.dataset.by,+d.dataset.at,k)});
+  const d=e.target.closest(".del");if(d)return delCom(d.dataset.by,+d.dataset.at,k)}
+$("view").addEventListener("click",pubClick);$("gpsbar").addEventListener("click",pubClick);
 function wfail(e,k){busyW=false;pubMsgK=k||"";pubMsg=e&&e.code==="invalid_argument"?tx("noWrite"):e&&e.code==="quota_exceeded"?tx("dbFull"):tx("sendFail");renderPub()}
 async function vote(k,v){if(busyW||!ME)return;busyW=true;pubMsg="";
+  if(NTF){const cv=MYV[k]&&MYV[k].d===today()?MYV[k].v:null;try{await ntSend({t:"v",k,v:cv===v?"":v});busyW=false;renderPub()}catch(e){wfail(e,k)}return}
   const nv={},cut=Date.now()-3*864e5;for(const [kk,o] of Object.entries(MYV))if(o&&o.at>cut)nv[kk]=o;
   if(nv[k]&&nv[k].v===v&&nv[k].d===today())delete nv[k];else nv[k]={v,d:today(),at:Date.now()};
   try{await DB.doc("reports/"+ME).set({v:nv});MYV=nv;busyW=false;renderPub()}catch(e){wfail(e,k)}}
 async function comment(k,mine,ta){const t=(ta?ta.value:"").trim().slice(0,300);if(!t||busyW||!ME)return;busyW=true;pubMsg="";
+  if(NTF){try{await ntSend({t:"c",k,txt:t,v:mine||""});busyW=false;if(ta)ta.value="";renderPub()}catch(e){wfail(e,k)}return}
   const items=[{k,txt:t,v:mine||"",at:Date.now()},...MYC].slice(0,40);
   try{await DB.doc("comments/"+ME).set({items});MYC=items;busyW=false;if(ta)ta.value="";renderPub()}catch(e){wfail(e,k)}}
-async function delCom(by,at,k){if(busyW)return;busyW=true;
+async function delCom(by,at,k){if(busyW)return;
+  if(NTF){if(by!==ME)return;busyW=true;try{await ntSend({t:"d",ca:at});busyW=false;renderPub()}catch(e){wfail(e,k)}return}
+  busyW=true;
   try{const ref=DB.doc("comments/"+by);const sn=await ref.get();const items=((sn.exists&&sn.data().items)||[]).filter(c=>c.at!==at);await ref.set({items});if(by===ME)MYC=items;busyW=false;renderPub()}catch(e){wfail(e,k)}}
 (async()=>{
   try{DB=await claude.use("db");USR=await claude.use("user")}catch(e){DB=null}
+  if(!DB&&typeof __SA!=="undefined"){NTF=true;ME=myId();
+    const pull=()=>ntPoll().then(()=>{pubState="ready";renderPub()}).catch(()=>{if(pubState!=="ready"){pubState="slow";renderPub()}});
+    await pull();setInterval(()=>{if(!document.hidden)pull()},45000);document.addEventListener("visibilitychange",()=>{if(!document.hidden)pull()});return}
   if(!DB){pubState="off";renderPub();return}
   try{ME=USR?await USR.id():null;OWNER=USR?!!(await USR.isOwner()):false}catch(e){}
   let gotR=false,gotC=false;const tm=setTimeout(()=>{if(!gotR||!gotC){pubState="slow";renderPub()}},10000);
@@ -358,10 +382,13 @@ function locate(la,lo,hd,acc){let best=null;
   const p=D.p[best.prov];let near=null,nd=1e9;for(const t of p.T){const d=km(la,lo,t.la,t.lo);if(d<nd){nd=d;near=t}}
   let ahead=null;if(hd!=null){const dA=Math.abs(((bearing(la,lo,best.A.la,best.A.lo)-hd+540)%360)-180),dB=Math.abs(((bearing(la,lo,best.B.la,best.B.lo)-hd+540)%360)-180);ahead=dA<dB?best.A:best.B}
   return {...best,la,lo,hd,acc,near,nd,ahead}}
-function gpsBar(){const bar=$("gpsbar");if(!GPS&&!WATCH&&!manual){bar.hidden=true;return}bar.hidden=false;
+function gpsRb(bar){let rb=$("gpsrb");if(!rb){bar.innerHTML='<div id="gpsinfo"></div><div class="rb" id="gpsrb" hidden></div>';rb=$("gpsrb")}
+  if(!GPS){rb.hidden=true;return}const p=D.p[GPS.prov];let h=ROAD&&ROAD.on&&ROAD.no&&p.H.find(x=>x.no===ROAD.no);if(!h)h=p.H[GPS.hi];if(!h){rb.hidden=true;return}
+  const k=roadKey(GPS.prov,h);rb.hidden=false;if(rb.dataset.k!==k||!rb.innerHTML){rb.dataset.k=k;rb.dataset.no=h.no;renderPub()}}
+function gpsBar(){const bar0=$("gpsbar");if(!GPS&&!WATCH&&!manual){bar0.hidden=true;return}bar0.hidden=false;if(!$("gpsinfo"))gpsRb(bar0);const bar=$("gpsinfo");
   const selHtml=`<label class="note" for="msel" style="display:block;margin-top:8px">${esc(tx("orPick"))}</label><select id="msel"><option value="">${esc(tx("choose"))}</option>${D.order.map(c=>`<optgroup label="${esc(pn(D.p[c]))}">${D.p[c].T.map(x=>`<option value="${c}|${esc(x.n)}">${esc(x.n)}</option>`).join("")}</optgroup>`).join("")}</select>`;
   const bindSel=()=>{const ms=$("msel");if(ms)ms.onchange=e=>{const[c,n]=e.target.value.split("|");const x=D.p[c]&&D.p[c].T.find(q=>q.n===n);if(x){manual=true;ROAD=undefined;onFix(x.la,x.lo,null,0,true);if(LM)LM.centered=false,lmMe()}}};
-  if(!GPS){bar.innerHTML=WATCH!=null?`<span class="note">${esc(tx("gpsSearching"))}</span>`:(gpsErr?`<p class="pmsg" style="margin-top:0">${esc(gpsErr)}</p>`:"")+selHtml;bindSel();return}
+  if(!GPS){gpsRb(bar0);bar.innerHTML=WATCH!=null?`<span class="note">${esc(tx("gpsSearching"))}</span>`:(gpsErr?`<p class="pmsg" style="margin-top:0">${esc(gpsErr)}</p>`:"")+selHtml;bindSel();return}
   const p=D.p[GPS.prov],t=GPS.ahead||GPS.near,l=level(t.r.s);
   const cam=p.cams.map(k=>({k,d:km(GPS.la,GPS.lo,k[2],k[3])})).sort((a,b)=>a.d-b.d)[0];
   bar.innerHTML=`${trackHTML()}<br>
@@ -369,7 +396,7 @@ function gpsBar(){const bar=$("gpsbar");if(!GPS&&!WATCH&&!manual){bar.hidden=tru
    ${cam&&cam.d<60?`${cam.d<25?camImgs(p,[cam.k]):""}<div class="cams"><a class="cam" href="${esc(camUrl(p,cam.k))}" target="_blank" rel="noopener">${esc(tx("nearCam",Math.round(cam.d)))}</a></div>`:""}
    ${WATCH!=null?(gpsWarn?`<div class="m" style="white-space:normal">${esc(gpsWarn)}</div>`:""):selHtml}`;
   if(gpsErr&&WATCH==null)bar.insertAdjacentHTML("afterbegin",`<p class="pmsg" style="margin-top:0">${esc(gpsErr)}</p>`);
-  bindSel();
+  bindSel();gpsRb(bar0);
 }
 function onFix(la,lo,hd,acc,force,spd){if(!D)return;const prev=GPS;if(hd==null&&prev&&!force&&!manual){const dd=km(prev.la,prev.lo,la,lo);if(dd>0.02)hd=bearing(prev.la,prev.lo,la,lo);else if(dd<0.005)hd=prev.hd}GPS=locate(la,lo,hd,acc);GPS.ts=Date.now();
   if(spd!=null&&!isNaN(spd))GPS.spd=spd;else if(prev&&!force&&GPS.ts-prev.ts>800)GPS.spd=km(prev.la,prev.lo,la,lo)*1000/((GPS.ts-prev.ts)/1000);else GPS.spd=prev?prev.spd:null;
@@ -531,7 +558,8 @@ function trackHTML(){if(!GPS)return"";const p=D.p[GPS.prov];let s="";
   return s}
 function fsBar(){if(!LM||!LM.fs)return;const b=$("fsbar");if(!GPS){b.hidden=true;return}b.hidden=false;
   const t=GPS.ahead||GPS.near,l=level(t.r.s);
-  b.innerHTML=trackHTML()+`<br><span style="color:var(--${l.k});font-weight:700">${esc(tx("riskTo",t.n,l.t,t.r.s))}</span>${t.fc?` <span class="m">${fcBadge(t.fc.r.s)} ${esc(fmtHour(t.fc.at))}</span>`:""}`}
+  const p=D.p[GPS.prov];let h=ROAD&&ROAD.on&&ROAD.no&&p.H.find(x=>x.no===ROAD.no);if(!h)h=p.H[GPS.hi];const rk=h?roadKey(GPS.prov,h):"";
+  b.innerHTML=trackHTML()+`<br><span style="color:var(--${l.k});font-weight:700">${esc(tx("riskTo",t.n,l.t,t.r.s))}</span>${t.fc?` <span class="m">${fcBadge(t.fc.r.s)} ${esc(fmtHour(t.fc.at))}</span>`:""}${rk?`<br><span class="m">${esc(tx("pubBtn"))}</span> <span class="pc" data-k="${esc(rk)}">${pubChip(rk)}</span>`:""}`}
 function lmMe(){if(!LM||!LM.m)return;LM.me.clearLayers();LM.cur.clearLayers();if(!GPS)return;const ll=[GPS.la,GPS.lo];
   if(ROAD&&ROAD.on&&ROAD.g)LL.polyline(ROAD.g.map(q=>[q.lat,q.lon]),{color:"#2f7cf6",weight:11,opacity:.45,interactive:false}).addTo(LM.cur);
   if(GPS.acc&&!manual)LL.circle(ll,{radius:GPS.acc,color:"#2f7cf6",weight:1,fillOpacity:.12,interactive:false}).addTo(LM.me);
