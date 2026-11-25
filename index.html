@@ -102,7 +102,7 @@ h2{font-size:20px;margin:6px 0 10px;line-height:1.25}
 .mbtns{position:absolute;top:8px;left:8px;right:8px;z-index:600;display:flex;flex-wrap:wrap;gap:6px;pointer-events:none}.mbtns button{pointer-events:auto;font:inherit;font-weight:700;font-size:14px;min-height:42px;padding:0 12px;border-radius:12px;border:1px solid #2f7cf6;background:rgba(12,16,20,.92);color:#fff;cursor:pointer}
 #mbig{background:#2f7cf6!important}#mvoice.on{background:#2f7cf6!important}.mbtns button:focus-visible{outline:3px solid var(--ice)}
 .mleg{position:absolute;left:8px;bottom:8px;z-index:600;display:flex;flex-wrap:wrap;gap:4px 10px;background:rgba(12,16,20,.85);border-radius:10px;padding:4px 8px;font-size:12px;max-width:70%}.mleg i{display:inline-block;width:14px;height:5px;border-radius:3px;margin-inline-end:4px;vertical-align:middle}
-.meic{background:none;border:0}
+.meic{background:none;border:0}.darkt{filter:invert(1) hue-rotate(180deg) brightness(.85) contrast(.85) saturate(.6)}
 #map.fs{position:fixed;inset:0;z-index:3000;margin:0;border-radius:0;border:0;padding:0;display:flex;flex-direction:column;gap:0;align-items:stretch;background:#0c1014}
 #map.fs #lwrap{flex:1;height:auto;border-radius:0}#map.fs #tip{flex:none;max-height:36vh;overflow:auto;background:var(--card);padding:10px 14px;border-top:1px solid var(--line)}#map.fs #tip:empty{display:none}
 #fsbar{flex:none;background:#0f1d33;border-bottom:1px solid #2f7cf6;padding:10px 14px;font-size:15px;line-height:1.45}#fsbar b.big{font-size:19px}
@@ -425,7 +425,7 @@ function initLM(){const el=$("map");el.classList.add("lm");
    <div class="mbtns"><button type="button" id="mbig"></button><button type="button" id="mclose" hidden>✕ <span></span></button><button type="button" id="mfol" hidden>◎ <span></span></button><button type="button" id="mvoice" hidden></button></div>
    <div class="mleg">${LV.map(l=>`<span><i style="background:var(--${l.k})"></i>${esc(l.t)}</span>`).join("")}</div></div>`);
   const m=LL.map("lmap",{zoomControl:false,minZoom:3,maxZoom:18,worldCopyJump:false});LM.m=m;LM.cv=LL.canvas({tolerance:10});
-  LL.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",{subdomains:"abcd",maxZoom:19,attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>'}).addTo(m);
+  LL.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19,className:"darkt",attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'}).addTo(m);
   LL.control.zoom({position:"bottomright"}).addTo(m);
   for(const g of ["prov","roads","osm","rc","cur","towns","cams","me"])LM[g]=LL.layerGroup().addTo(m);
   setInteract(false);
