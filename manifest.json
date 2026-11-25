@@ -1,11 +1,11 @@
 {
- "name": "ਕੈਨੇਡਾ ਬਲੈਕ ਆਈਸ ਅਲਰਟ",
- "short_name": "Black Ice",
+ "name": "Canadian Road",
+ "short_name": "Canadian Road",
  "start_url": "./",
  "display": "standalone",
  "background_color": "#12161b",
  "theme_color": "#12161b",
- "lang": "pa",
+ "lang": "en",
  "icons": [
   {
    "src": "icon-192.png",
@@ -18,5 +18,14 @@
    "type": "image/png",
    "purpose": "any maskable"
   }
+ ],
+ "description": "Black ice risk, 24-hour warnings, live road cameras and driver reports for highways across Canada.",
+ "id": "./",
+ "scope": "./",
+ "orientation": "portrait",
+ "categories": [
+  "navigation",
+  "travel",
+  "weather"
  ]
 }
