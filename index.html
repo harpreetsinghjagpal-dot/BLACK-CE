@@ -304,7 +304,7 @@ function ntAgg(){const td=today(),last={},coms=[],dels=new Set();
   for(const m of NMSG.slice().sort((a,b)=>a.at-b.at)){if(m.t==="v")last[m.id+"\n"+m.k]=m;else if(m.t==="c")coms.push(m);else dels.add(m.id+"\n"+m.ca)}
   const agg={},mv={};for(const m of Object.values(last)){if(!VC[m.v])continue;const d=new Date(m.at).toLocaleDateString("en-CA");if(d!==td)continue;(agg[m.k]=agg[m.k]||{})[m.v]=(agg[m.k][m.v]||0)+1;if(m.id===ME)mv[m.k]={v:m.v,d,at:m.at}}
   VOTES=agg;MYV=mv;COMS=coms.filter(c=>!dels.has(c.id+"\n"+c.at)).map(c=>({k:c.k,txt:c.txt,v:c.v,at:c.at,by:c.id})).sort((a,b)=>b.at-a.at);MYC=COMS.filter(c=>c.by===ME)}
-async function ntPoll(){const r=await fetch(NT+"/json?poll=1&since=12h",{cache:"no-store"});if(!r.ok)throw new Error("poll");(await r.text()).split("\n").forEach(l=>l.trim()&&ntParse(l));
+async function ntPoll(){const r=await fetch(NT+"/json?poll=1&since=all",{cache:"no-store"});if(!r.ok)throw new Error("poll");(await r.text()).split("\n").forEach(l=>l.trim()&&ntParse(l));
   const cut=Date.now()-13*36e5;NMSG=NMSG.filter(m=>m.at>cut);ntAgg()}
 async function ntSend(o){const r=await fetch(NT,{method:"POST",body:JSON.stringify({...o,id:ME})});if(!r.ok){const e=new Error("send");e.code=r.status===429?"rate":"";throw e}
   const j=await r.json().catch(()=>null);if(j)ntParse(j);ntAgg()}
