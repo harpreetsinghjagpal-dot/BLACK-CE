@@ -134,7 +134,7 @@ def qc():
     import xml.etree.ElementTree as ET
     from email.utils import parsedate_to_datetime
     host = "https://www.quebec511.info"
-    rows, seen = [], set()
+    rows, seen, errs, ok = [], set(), [], 0
     for reg in QC_REGIONS:
         try:
             page = get_text(f"{host}/Diffusion/Rss/RoutesRss.aspx?regn={reg}&lang=En")
@@ -144,8 +144,10 @@ def qc():
             xml = get_text(f"{host}/Diffusion/Rss/GenererRss.aspx?regn={reg}&routes={';'.join(ids)}&lang=En",
                            enc="iso-8859-1")
             root = ET.fromstring(xml.encode("iso-8859-1", "replace"))
+            ok += 1
         except Exception as e:
             print("QC", reg, "skip:", e, file=sys.stderr)
+            errs.append(f"{reg}: {str(e)[:60]}")
             continue
         for it in root.iter("item"):
             title = it.findtext("title") or ""
@@ -184,6 +186,8 @@ def qc():
                 if not c:
                     continue
                 rows.append([f"{m.group(1)}-{m.group(2)}", desc, c, [], "i", upd])
+    if not ok:
+        raise RuntimeError("all regions failed: " + "; ".join(errs[:3]))
     return rows
 
 
@@ -268,6 +272,14 @@ def main():
             if prov in old.get("p", {}) and out["t"] - old.get("t", 0) < 6 * 3600e3:
                 out["p"][prov] = old["p"][prov]
                 out["src"][prov] = label
+    for k, v in out["p"].items():  # drop exact duplicates
+        seen, keep = set(), []
+        for r in v:
+            key = (r[0], r[1], r[2])
+            if key not in seen:
+                seen.add(key)
+                keep.append(r)
+        out["p"][k] = keep
     for k, v in out["p"].items():
         print(k, len(v), "reports")
     for k, v in out["err"].items():
