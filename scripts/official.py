@@ -89,7 +89,7 @@ def ibi(prov):
     host, cond, _ = IBI[prov]
     rows = []
     for r in ibi_list(host, cond):
-        if r.get("stale") or age_days(r.get("lastUpdated")) > 3:
+        if r.get("stale") or age_days(r.get("lastUpdated")) > 3 or not hw_road(r.get("roadway")):
             continue
         txt = " ".join([str(r.get("primaryCondition") or "")] + [str(x) for x in (r.get("secondaryConditions") or [])])
         c = code_for(txt)
@@ -127,7 +127,7 @@ def bc():
         desc = clean(e.get("description"))
         roads = e.get("roads") or [{}]
         road = roads[0].get("name", "")
-        if et not in ("INCIDENT", "WEATHER_CONDITION", "ROAD_CONDITION") and "closed" not in desc.lower():
+        if et not in ("INCIDENT", "WEATHER_CONDITION", "ROAD_CONDITION") or "rest area" in desc.lower():
             continue
         if not hw_road(road):
             continue
