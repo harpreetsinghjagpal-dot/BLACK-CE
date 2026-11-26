@@ -22,8 +22,7 @@ IBI = {  # province: (host, conditions list name, source label)
     "YT": ("https://511yukon.ca", "WinterRoads", "511 Yukon"),
     "PE": ("https://511.gov.pe.ca", "WinterRoads", "PEI 511"),
 }
-QC_REGIONS = ["1000", "2000", "3000", "4000", "5000", "6000", "7000", "8000", "9000", "10000",
-              "11000", "12000", "13000", "14000"]
+
 NOW = datetime.datetime.now(datetime.timezone.utc)
 
 
@@ -130,64 +129,39 @@ def get_text(url, timeout=40, enc=None):
 
 
 def qc():
-    """Quebec 511 RSS: road conditions + warnings, per region."""
-    import xml.etree.ElementTree as ET
-    from email.utils import parsedate_to_datetime
-    host = "https://www.quebec511.info"
-    rows, seen, errs, ok = [], set(), [], 0
-    for reg in QC_REGIONS:
-        try:
-            page = get_text(f"{host}/Diffusion/Rss/RoutesRss.aspx?regn={reg}&lang=En")
-            ids = re.findall(r'id="chk(\d+)"', page)
-            if not ids:
-                continue
-            xml = get_text(f"{host}/Diffusion/Rss/GenererRss.aspx?regn={reg}&routes={';'.join(ids)}&lang=En",
-                           enc="iso-8859-1")
-            root = ET.fromstring(xml.encode("iso-8859-1", "replace"))
-            ok += 1
-        except Exception as e:
-            print("QC", reg, "skip:", e, file=sys.stderr)
-            errs.append(f"{reg}: {str(e)[:60]}")
+    """Quebec winter road conditions, official open data (Données Québec, CC-BY 4.0,
+    same data as Québec 511). WFS GeoJSON first (has geometry), CKAN datastore as fallback."""
+    wfs = ("https://ws.mapserver.transports.gouv.qc.ca/swtq?service=wfs&version=2.0.0&request=getfeature"
+           "&typename=ms:conditions_routieres&srsname=EPSG:4326&outputformat=geojson")
+    feats = []
+    try:
+        feats = [(f.get("properties") or {}, f.get("geometry") or {}) for f in get(wfs, timeout=60).get("features", [])]
+    except Exception as e:
+        print("QC wfs:", e, file=sys.stderr)
+        ds = ("https://www.donneesquebec.ca/recherche/api/3/action/datastore_search"
+              "?resource_id=878ec199-1698-4059-b14f-1697fe441070&limit=10000")
+        feats = [(r, {}) for r in get(ds, timeout=60)["result"]["records"]]
+    rows = []
+    for p, g in feats:
+        road_c = str(p.get("DescriptionEtatChausseeEN") or "")
+        vis = str(p.get("DescriptionVisibiliteEN") or "").lower()
+        c = code_for(road_c)
+        if not c and (vis.startswith("poor") or vis.startswith("nil") or "zero" in vis):
+            c = "Poor Vis"
+        if not c and str(p.get("IndicateurPresenceLamesNeige") or "").upper() == "O":
+            c = "Drifting"
+        if not c:
             continue
-        for it in root.iter("item"):
-            title = it.findtext("title") or ""
-            desc = clean(it.findtext("description"))
-            cat = (it.findtext("category") or "").lower()
-            try:
-                when = parsedate_to_datetime(it.findtext("pubDate"))
-                age = (NOW - when).days
-                upd = when.strftime("%Y-%m-%d %H:%M")
-            except Exception:
-                age, upd = 0, ""
-            key = (title, desc)
-            if key in seen:
-                continue
-            seen.add(key)
-            if "condition" in cat:
-                if age > 3:
-                    continue
-                parts = [p.strip() for p in desc.split("|")]
-                c = code_for(" ".join(parts[1:2]))
-                if not c and len(parts) > 2 and parts[2].lower().startswith("poor"):
-                    c = "Poor Vis"
-                if not c:
-                    continue
-                road = title.split(":")[0].strip()
-                rows.append([road, parts[0], c, [], "c", upd])
-            else:  # warnings: keep closures and weather, skip roadwork
-                low = desc.lower()
-                if "roadwork" in low or "travaux" in low:
-                    continue
-                m = re.search(r"\b([AR])-(\d+)", desc)
-                if not m:
-                    continue
-                full = re.search(r"\bclosed\b", low) and "lane closed" not in low and "lanes closed out of" not in low
-                c = "Closed" if full else code_for(desc)
-                if not c:
-                    continue
-                rows.append([f"{m.group(1)}-{m.group(2)}", desc, c, [], "i", upd])
-    if not ok:
-        raise RuntimeError("all regions failed: " + "; ".join(errs[:3]))
+        num = str(p.get("NumeroRoute") or "").strip()
+        road = f"Route {num}" if num else clean(p.get("NomRoute"), 60)
+        desc = f"{clean(p.get('LocalisationDebutEN') or p.get('LocalisationDebutFR'), 60)} to {clean(p.get('LocalisationFinEN') or p.get('LocalisationFinFR'), 60)}"
+        pts = []
+        cs = g.get("coordinates") or []
+        if g.get("type") == "MultiLineString":
+            cs = [q for line in cs for q in line]
+        if g.get("type") in ("LineString", "MultiLineString") and cs:
+            pts = [[round(q[1], 3), round(q[0], 3)] for q in cs[:: max(1, len(cs) // 8)]]
+        rows.append([road, desc, c, pts, "c", str(p.get("EnVigueurDepuis") or "")[:16]])
     return rows
 
 
@@ -263,7 +237,7 @@ def main():
                 if out["t"] - old.get("t", 0) < 6 * 3600e3:
                     out["p"][prov] = old["p"][prov]
                     out["src"][prov] = IBI[prov][2]
-    for prov, fn, label in (("BC", bc, "DriveBC"), ("QC", qc, "Québec 511"), ("NT", nt, "DriveNWT")):
+    for prov, fn, label in (("BC", bc, "DriveBC"), ("QC", qc, "Québec 511 (Données Québec)"), ("NT", nt, "DriveNWT")):
         try:
             out["p"][prov] = fn()
             out["src"][prov] = label
