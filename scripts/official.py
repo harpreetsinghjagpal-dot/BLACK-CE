@@ -190,7 +190,9 @@ def nt():
             if age > 14 or typ in ("Construction", "Width Reduction", "Equipment Working"):
                 continue
             c = {"Closure": "Closed", "Fire and Smoke": "Poor Vis"}.get(typ) or code_for(text) or "Caution"
-            rows.append([loc.split(" at ")[0][:60], f"{loc} — {text}" if text else loc, c, [], "i", upd])
+            m = re.match(r"(Highway \d+[A-Z]?)", loc)
+            road = m.group(1) if m else loc.split(" at ")[0][:60]
+            rows.append([road, f"{loc} — {text}" if text and text not in loc else (text or loc), c, [], "i", upd])
         elif div == "8131" and "Closed" in typ:  # ferries / ice crossings
             rows.append([loc[:60], typ, "Closed", [], "i", upd])
     return rows
