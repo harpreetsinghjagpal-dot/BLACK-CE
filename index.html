@@ -163,7 +163,7 @@ const fmt=n=>(Math.round(n*10)/10).toFixed(1);
 const LV=[{min:60,k:"r4",i:"lv4"},{min:35,k:"r3",i:"lv3"},{min:15,k:"r2",i:"lv2"},{min:-1,k:"r1",i:"lv1"}];LV.forEach(l=>Object.defineProperty(l,"t",{get:()=>tx(l.i)}));
 const level=s=>LV.find(l=>s>=l.min);
 const COL={r4:"#ff4d4d",r3:"#ff9a2e",r2:"#ffd84a",r1:"#4fd18b"};
-const CPA={"Ptly Cvd Ice":"cPtlyIce","Ptly Cvd Snw":"cPtlySnw","Cvd Snw":"cCvdSnw","Cvd Ice":"cCvdIce","Bare Wet":"cWet","Closed":"cClosed","Incident":"cInc","Slippery":"cSlip","Frost":"cFrost","Drifting":"cDrift","Poor Vis":"cVis"};
+const CPA={"Ptly Cvd Ice":"cPtlyIce","Ptly Cvd Snw":"cPtlySnw","Cvd Snw":"cCvdSnw","Cvd Ice":"cCvdIce","Bare Wet":"cWet","Closed":"cClosed","Incident":"cInc","Slippery":"cSlip","Frost":"cFrost","Drifting":"cDrift","Poor Vis":"cVis","Caution":"vY"};
 const cpa=c=>CPA[c]?tx(CPA[c]):c;
 const km=(a,b,c,d)=>{const r=Math.PI/180,x=(d-b)*r*Math.cos((a+c)/2*r),y=(c-a)*r;return Math.hypot(x,y)*6371};
 const hwNo=s=>(String(s).match(/\d+/)||[])[0];

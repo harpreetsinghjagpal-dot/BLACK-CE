@@ -20,7 +20,10 @@ IBI = {  # province: (host, conditions list name, source label)
     "NS": ("https://511.novascotia.ca", "WinterRoads", "511 Nova Scotia"),
     "NL": ("https://511nl.ca", "WinterRoads", "511 NL"),
     "YT": ("https://511yukon.ca", "WinterRoads", "511 Yukon"),
+    "PE": ("https://511.gov.pe.ca", "WinterRoads", "PEI 511"),
 }
+QC_REGIONS = ["1000", "2000", "3000", "4000", "5000", "6000", "7000", "8000", "9000", "10000",
+              "11000", "12000", "13000", "14000"]
 NOW = datetime.datetime.now(datetime.timezone.utc)
 
 
@@ -119,6 +122,102 @@ def ibi(prov):
     return rows
 
 
+def get_text(url, timeout=40, enc=None):
+    req = urllib.request.Request(url, headers={"User-Agent": UA})
+    with urllib.request.urlopen(req, timeout=timeout) as r:
+        raw = r.read()
+    return raw.decode(enc or r.headers.get_content_charset() or "utf-8", "replace")
+
+
+def qc():
+    """Quebec 511 RSS: road conditions + warnings, per region."""
+    import xml.etree.ElementTree as ET
+    from email.utils import parsedate_to_datetime
+    host = "https://www.quebec511.info"
+    rows, seen = [], set()
+    for reg in QC_REGIONS:
+        try:
+            page = get_text(f"{host}/Diffusion/Rss/RoutesRss.aspx?regn={reg}&lang=En")
+            ids = re.findall(r'id="chk(\d+)"', page)
+            if not ids:
+                continue
+            xml = get_text(f"{host}/Diffusion/Rss/GenererRss.aspx?regn={reg}&routes={';'.join(ids)}&lang=En",
+                           enc="iso-8859-1")
+            root = ET.fromstring(xml.encode("iso-8859-1", "replace"))
+        except Exception as e:
+            print("QC", reg, "skip:", e, file=sys.stderr)
+            continue
+        for it in root.iter("item"):
+            title = it.findtext("title") or ""
+            desc = clean(it.findtext("description"))
+            cat = (it.findtext("category") or "").lower()
+            try:
+                when = parsedate_to_datetime(it.findtext("pubDate"))
+                age = (NOW - when).days
+                upd = when.strftime("%Y-%m-%d %H:%M")
+            except Exception:
+                age, upd = 0, ""
+            key = (title, desc)
+            if key in seen:
+                continue
+            seen.add(key)
+            if "condition" in cat:
+                if age > 3:
+                    continue
+                parts = [p.strip() for p in desc.split("|")]
+                c = code_for(" ".join(parts[1:2]))
+                if not c and len(parts) > 2 and parts[2].lower().startswith("poor"):
+                    c = "Poor Vis"
+                if not c:
+                    continue
+                road = title.split(":")[0].strip()
+                rows.append([road, parts[0], c, [], "c", upd])
+            else:  # warnings: keep closures and weather, skip roadwork
+                low = desc.lower()
+                if "roadwork" in low or "travaux" in low:
+                    continue
+                m = re.search(r"\b([AR])-(\d+)", desc)
+                if not m:
+                    continue
+                full = re.search(r"\bclosed\b", low) and "lane closed" not in low and "lanes closed out of" not in low
+                c = "Closed" if full else code_for(desc)
+                if not c:
+                    continue
+                rows.append([f"{m.group(1)}-{m.group(2)}", desc, c, [], "i", upd])
+    return rows
+
+
+def nt():
+    """DriveNWT: road conditions and advisories from the map's data file."""
+    host = "https://drivenwt.ca"
+    path = json.loads(get_text(f"{host}/Home/GetJsonDataPath?installationIndex=0"))["filePath"].replace("/../", "/")
+    j = json.loads(get_text(host + path))
+    sub = {k: (v.get("en-us") if isinstance(v, dict) else str(v)) for k, v in j.get("EntitySubTypeNames", {}).items()}
+    rows = []
+    for i in j.get("Issues", []):
+        tv, d = i.get("TableViewInfo") or {}, i.get("Description") or {}
+        typ = sub.get(tv.get("IssueTypeId"), "") or ""
+        loc = ((tv.get("LocationLocalizations") or {}).get("en-us") or tv.get("Location") or "").strip()
+        text = clean(re.sub(r"^\[\d+\]\s*", "", d.get("BaseDescription") or ""))
+        upd_ms = d.get("UpdateTimeUtcEpochMillis") or 0
+        age = (NOW.timestamp() * 1000 - upd_ms) / 864e5 if upd_ms else 99
+        upd = datetime.datetime.fromtimestamp(upd_ms / 1000, datetime.timezone.utc).strftime("%Y-%m-%d %H:%M") if upd_ms else ""
+        div = str(i.get("DivisionId"))
+        if div == "8128":  # road conditions
+            if "Winter Road" in typ or typ.startswith("Open ("):
+                continue
+            c = "Closed" if typ.startswith("Closed") else (code_for(text) or "Caution")
+            rows.append([loc.split(":")[0][:60], text or loc, c, [], "c", upd])
+        elif div == "8136":  # advisories
+            if age > 14 or typ in ("Construction", "Width Reduction", "Equipment Working"):
+                continue
+            c = {"Closure": "Closed", "Fire and Smoke": "Poor Vis"}.get(typ) or code_for(text) or "Caution"
+            rows.append([loc.split(" at ")[0][:60], f"{loc} — {text}" if text else loc, c, [], "i", upd])
+        elif div == "8131" and "Closed" in typ:  # ferries / ice crossings
+            rows.append([loc[:60], typ, "Closed", [], "i", upd])
+    return rows
+
+
 def bc():
     j = get("https://api.open511.gov.bc.ca/events?format=json&status=ACTIVE&limit=500")
     rows = []
@@ -160,11 +259,15 @@ def main():
                 if out["t"] - old.get("t", 0) < 6 * 3600e3:
                     out["p"][prov] = old["p"][prov]
                     out["src"][prov] = IBI[prov][2]
-    try:
-        out["p"]["BC"] = bc()
-        out["src"]["BC"] = "DriveBC"
-    except Exception as e:
-        out["err"]["BC"] = str(e)[:200]
+    for prov, fn, label in (("BC", bc, "DriveBC"), ("QC", qc, "Québec 511"), ("NT", nt, "DriveNWT")):
+        try:
+            out["p"][prov] = fn()
+            out["src"][prov] = label
+        except Exception as e:
+            out["err"][prov] = str(e)[:200]
+            if prov in old.get("p", {}) and out["t"] - old.get("t", 0) < 6 * 3600e3:
+                out["p"][prov] = old["p"][prov]
+                out["src"][prov] = label
     for k, v in out["p"].items():
         print(k, len(v), "reports")
     for k, v in out["err"].items():
