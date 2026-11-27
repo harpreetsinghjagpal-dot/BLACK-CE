@@ -455,3 +455,124 @@ I-270|Interstate 270|Frederick,Gaithersburg,Bethesda
 @DE|Delaware|ਡੇਲਾਵੇਅਰ|https://deldot.gov/map/
 I-95|Interstate 95|Newark,Wilmington,Claymont
 US-13|US 13|Wilmington,Middletown,Smyrna,Dover,Harrington,Seaford,Delmar
+
+@HI|Hawaii|ਹਵਾਈ|https://goakamai.org
+HI-19|Hawaii Belt (north)|Hilo,Honokaa,Kamuela,Waikoloa,Kailua Kona
+HI-11|Hawaii Belt (south)|Hilo,Volcano,Pahala,Naalehu,Captain Cook,Kailua Kona
+HI-200|Saddle Road (Mauna Kea)|Hilo,Mauna Kea Access@19.69/-155.468,Waikoloa
+HI-37|Haleakala|Kahului,Pukalani,Kula,Haleakala Summit@20.709/-156.253
+HI-30|Honoapiilani Hwy|Kahului,Wailuku,Lahaina
+HI-36|Hana Hwy|Kahului,Paia,Hana
+HI-311|Kihei|Kahului,Kihei
+I-H1|Interstate H-1|Kapolei,Waipahu,Pearl City,Honolulu
+HI-99|Central Oahu|Pearl City,Mililani,Wahiawa,Haleiwa
+I-H3|Interstate H-3|Honolulu,Kaneohe
+HI-50|Kauai south|Lihue,Waimea Kauai@21.957/-159.669
+HI-56|Kauai north|Lihue,Kapaa,Princeville
+
+# ---------------- Mexico (all 32 states). Federal highways: MEX-n ----------------
+@BCN|Baja California|ਬਾਖਾ ਕੈਲੀਫ਼ੋਰਨੀਆ|https://www.gob.mx/guardianacional
+MEX-2|La Rumorosa|Tijuana,Tecate,La Rumorosa,Mexicali
+MEX-1|Transpeninsular|Tijuana,Rosarito,Ensenada,San Quintin,El Rosario
+MEX-3|Sierra de Juarez|Tecate,Ensenada,Ojos Negros,Valle de la Trinidad,San Felipe
+MEX-5|Mexicali - San Felipe|Mexicali,San Felipe
+@BCS|Baja California Sur|ਬਾਖਾ ਕੈਲੀਫ਼ੋਰਨੀਆ ਸੁਰ|https://www.gob.mx/guardianacional
+MEX-1|Transpeninsular|Guerrero Negro,San Ignacio,Santa Rosalia,Mulege,Loreto,Ciudad Constitucion,La Paz,San Jose del Cabo,Cabo San Lucas
+@SON|Sonora|ਸੋਨੋਰਾ|https://www.gob.mx/guardianacional
+MEX-2|Carretera Federal 2|San Luis Rio Colorado,Sonoyta,Caborca,Santa Ana,Imuris,Cananea,Agua Prieta
+MEX-15|Carretera Federal 15|Nogales,Imuris,Magdalena de Kino,Santa Ana,Hermosillo,Guaymas,Ciudad Obregon,Navojoa
+MEX-16|Hermosillo - Yecora|Hermosillo,Tecoripa,Yecora
+@CHH|Chihuahua|ਚਿਹੂਆਹੂਆ|https://www.gob.mx/guardianacional
+MEX-2|Janos - Juarez|Janos,Ascension,Ciudad Juarez
+MEX-10|Nuevo Casas Grandes|Nuevo Casas Grandes,Janos
+MEX-45|Panamericana|Ciudad Juarez,Villa Ahumada,Chihuahua,Delicias,Camargo,Jimenez,Hidalgo del Parral
+MEX-16|Chihuahua - Basaseachi|Ojinaga,Aldama,Chihuahua,Cuauhtemoc,La Junta,Basaseachi
+@SIN|Sinaloa|ਸਿਨਾਲੋਆ|https://www.gob.mx/guardianacional
+MEX-15|Carretera Federal 15|Los Mochis,Guasave,Guamuchil,Culiacan,Mazatlan,Escuinapa
+MEX-40|Mazatlan - Durango|Mazatlan,Concordia
+@DUR|Durango|ਦੁਰਾਂਗੋ|https://www.gob.mx/guardianacional
+MEX-45|Panamericana|Rodeo,Durango,Nombre de Dios,Vicente Guerrero
+MEX-40|Durango - Mazatlan|Gomez Palacio,Cuencame,Durango,El Salto
+@COA|Coahuila|ਕੋਆਹੁਇਲਾ|https://www.gob.mx/guardianacional
+MEX-57|Carretera Federal 57|Piedras Negras,Allende,Sabinas,Monclova,Saltillo,Arteaga
+MEX-40|Torreon - Saltillo|Torreon,San Pedro,Saltillo
+@NLE|Nuevo León|ਨੁਏਵੋ ਲਿਓਨ|https://www.gob.mx/guardianacional
+MEX-85|Carretera Federal 85|Sabinas Hidalgo,Monterrey,Montemorelos,Linares
+MEX-40|Saltillo - Monterrey|Santa Catarina,Monterrey,Cadereyta Jimenez
+NLE-58|Sierra Madre|Linares,Iturbide,Galeana
+@TAM|Tamaulipas|ਤਾਮਾਉਲੀਪਾਸ|https://www.gob.mx/guardianacional
+MEX-2|Frontera|Nuevo Laredo,Reynosa,Matamoros
+MEX-85|Carretera Federal 85|Nuevo Laredo,Ciudad Victoria,Ciudad Mante
+MEX-180|Golfo|Matamoros,San Fernando,Soto la Marina,Aldama,Tampico
+@ZAC|Zacatecas|ਜ਼ਾਕਾਤੇਕਸ|https://www.gob.mx/guardianacional
+MEX-45|Panamericana|Sombrerete,Fresnillo,Zacatecas,Luis Moya
+MEX-54|Zacatecas - Saltillo|Zacatecas,Concepcion del Oro
+@AGU|Aguascalientes|ਆਗੁਆਸਕਾਲੀਐਂਤੇਸ|https://www.gob.mx/guardianacional
+MEX-45|Panamericana|Rincon de Romos,Pabellon de Arteaga,Aguascalientes
+@SLP|San Luis Potosí|ਸਾਨ ਲੂਈਸ ਪੋਤੋਸੀ|https://www.gob.mx/guardianacional
+MEX-57|Carretera Federal 57|Matehuala,San Luis Potosi,Santa Maria del Rio
+MEX-70|SLP - Ciudad Valles|San Luis Potosi,Rioverde,Ciudad Valles
+MEX-80|SLP - Lagos|San Luis Potosi,Villa de Arriaga
+@NAY|Nayarit|ਨਾਇਆਰੀਤ|https://www.gob.mx/guardianacional
+MEX-15|Carretera Federal 15|Acaponeta,Tepic,Ixtlan del Rio
+MEX-200|Pacifico|Tepic,Compostela,Las Varas,Bucerias
+@JAL|Jalisco|ਹਾਲਿਸਕੋ|https://www.gob.mx/guardianacional
+MEX-15|Carretera Federal 15|Magdalena,Tequila,Guadalajara,Ocotlan,La Barca
+MEX-80|Guadalajara - Lagos|Guadalajara,Tepatitlan de Morelos,Lagos de Moreno
+MEX-54|Guadalajara - Colima|Guadalajara,Ciudad Guzman
+MEX-200|Pacifico|Puerto Vallarta,El Tuito,Tomatlan,Cihuatlan
+@COL|Colima|ਕੋਲੀਮਾ|https://www.gob.mx/guardianacional
+MEX-54|Colima - Manzanillo|Colima,Armeria,Manzanillo
+@MIC|Michoacán|ਮੀਚੋਆਕਾਨ|https://www.gob.mx/guardianacional
+MEX-15|Carretera Federal 15|Zamora,Morelia,Ciudad Hidalgo,Zitacuaro
+MEX-14|Morelia - Uruapan|Morelia,Patzcuaro,Uruapan
+MEX-37|Uruapan - Lazaro Cardenas|Uruapan,Nueva Italia,Lazaro Cardenas
+@GUA|Guanajuato|ਗੁਆਨਾਹੁਆਤੋ|https://www.gob.mx/guardianacional
+MEX-45|Bajio|Celaya,Salamanca,Irapuato,Silao,Leon
+@QUE|Querétaro|ਕੇਰੇਤਾਰੋ|https://www.gob.mx/guardianacional
+MEX-57|Carretera Federal 57|Queretaro,San Juan del Rio
+MEX-45|Bajio|Queretaro,Apaseo el Alto
+MEX-120|Sierra Gorda|San Juan del Rio,Cadereyta de Montes,Jalpan
+@HID|Hidalgo|ਹਿਡਾਲਗੋ|https://www.gob.mx/guardianacional
+MEX-85|Carretera Federal 85|Pachuca,Actopan,Ixmiquilpan,Zimapan,Jacala
+MEX-130|Pachuca - Tulancingo|Pachuca,Tulancingo
+@MEX|State of Mexico|ਮੈਕਸੀਕੋ ਸਟੇਟ|https://www.gob.mx/guardianacional
+MEX-15|Toluca|Villa Victoria,Toluca,Lerma
+MEX-55|Atlacomulco - Toluca|Atlacomulco,Ixtlahuaca,Toluca
+MEX-57|Mexico - Queretaro|Tepotzotlan,Cuautitlan Izcalli
+MEX-85|Mexico - Pachuca|Tecamac,Ojo de Agua
+MEX-150|Mexico - Puebla|Ixtapaluca,Chalco
+@DIF|Mexico City|ਮੈਕਸੀਕੋ ਸਿਟੀ|https://www.gob.mx/guardianacional
+MEX-95|Mexico - Cuernavaca|Mexico City@19.433/-99.133,Tlalpan@19.29/-99.17
+@MOR|Morelos|ਮੋਰੇਲੋਸ|https://www.gob.mx/guardianacional
+MEX-95|Mexico - Acapulco|Cuernavaca,Alpuyeca,Puente de Ixtla
+@GRO|Guerrero|ਗੇਰੇਰੋ|https://www.gob.mx/guardianacional
+MEX-95|Mexico - Acapulco|Iguala,Chilpancingo,Acapulco
+MEX-200|Costa Grande / Chica|Zihuatanejo,Petatlan,Tecpan de Galeana,Acapulco,Cruz Grande,Marquelia
+@TLA|Tlaxcala|ਤਲਾਕਸਕਾਲਾ|https://www.gob.mx/guardianacional
+MEX-136|Tlaxcala - Huamantla|Tlaxcala,Apizaco,Huamantla
+@PUE|Puebla|ਪੁਏਬਲਾ|https://www.gob.mx/guardianacional
+MEX-150|Mexico - Veracruz|San Martin Texmelucan,Puebla,Amozoc,Palmar de Bravo,Esperanza
+MEX-190|Puebla - Oaxaca|Puebla,Atlixco,Izucar de Matamoros,Acatlan de Osorio
+@VER|Veracruz|ਵੇਰਾਕਰੂਜ਼|https://www.gob.mx/guardianacional
+MEX-180|Golfo|Tuxpan,Poza Rica,Papantla,Nautla,Veracruz,Alvarado,San Andres Tuxtla,Acayucan,Coatzacoalcos
+MEX-150|Cumbres de Maltrata|Orizaba,Cordoba,Veracruz
+MEX-140|Perote - Xalapa|Perote,Xalapa,Veracruz
+@OAX|Oaxaca|ਓਆਹਾਕਾ|https://www.gob.mx/guardianacional
+MEX-190|Panamericana|Huajuapan de Leon,Nochixtlan,Oaxaca,Mitla,Santo Domingo Tehuantepec,Juchitan de Zaragoza
+MEX-200|Costa|Pinotepa Nacional,Puerto Escondido,San Pedro Pochutla,Salina Cruz
+MEX-175|Sierra Sur|Oaxaca,Miahuatlan de Porfirio Diaz,San Pedro Pochutla
+@CHP|Chiapas|ਚਿਆਪਾਸ|https://www.gob.mx/guardianacional
+MEX-190|Panamericana|Cintalapa,Tuxtla Gutierrez,San Cristobal de las Casas,Comitan
+MEX-200|Costa|Arriaga,Tonala,Pijijiapan,Huixtla,Tapachula
+@TAB|Tabasco|ਤਬਾਸਕੋ|https://www.gob.mx/guardianacional
+MEX-180|Golfo|Cardenas,Villahermosa,Frontera
+MEX-186|Villahermosa - Escarcega|Villahermosa,Emiliano Zapata
+@CAM|Campeche|ਕੰਪੇਚੇ|https://www.gob.mx/guardianacional
+MEX-180|Golfo|Ciudad del Carmen,Champoton,Campeche
+MEX-186|Escarcega - Chetumal|Escarcega,Xpujil
+MEX-261|Champoton - Escarcega|Champoton,Escarcega
+@YUC|Yucatán|ਯੂਕਾਤਾਨ|https://www.gob.mx/guardianacional
+MEX-180|Merida - Cancun|Uman,Merida,Valladolid
+@ROO|Quintana Roo|ਕਿੰਤਾਨਾ ਰੂ|https://www.gob.mx/guardianacional
+MEX-307|Riviera Maya|Cancun,Playa del Carmen,Tulum,Felipe Carrillo Puerto,Bacalar,Chetumal

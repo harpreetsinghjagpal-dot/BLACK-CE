@@ -16,10 +16,18 @@ for ln in open('build/corridors.txt',encoding='utf8'):
         if '@' in t:
             n,ll=t.split('@');la,lo=map(float,ll.split('/'));S[cur]['pos'][n]=(la,lo,'fixed')
 miss=[];amb=[]
+import os
+MXS=set(json.load(open('build/mx_query.json'))['states'])
+MXP=json.load(open('/home/claude/usb/mx_pos.json')) if os.path.exists('/home/claude/usb/mx_pos.json') else {}
 for c,s in S.items():
     for no,name,ts in s['hw']:
         for t in ts:
             if t in s['pos']:continue
+            if c in MXS:
+                v=MXP.get(c+'|'+t)
+                if v:s['pos'][t]=(v[0],v[1],'geo')
+                else:miss.append((c,t))
+                continue
             cand=db.get((c,nz(t)),[])
             if not cand: miss.append((c,t));continue
             if len(cand)>1: amb.append((c,t,cand))

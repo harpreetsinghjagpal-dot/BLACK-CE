@@ -310,6 +310,18 @@ for c, no, t, p in ends:
     seen.add(key)
     auto.append([c, t, c2, t2, max(1, round(d * 1.15))])
 out["xl"] = ok + auto
+try:  # freshest weather from the shared snapshot job
+    WS = json.load(open("/home/claude/usb/wx_us.json"))["p"]
+    for c, rows in WS.items():
+        ix = {r[0]: r for r in rows}
+        for t in out["p"].get(c, {}).get("towns", []):
+            r = ix.get(t[0])
+            if r and len(r) >= 11:
+                t[3:13] = r[1:11]
+                if t[3:13] != NEUTRAL: pass
+    nowx = sum(1 for c in out["p"] for t in out["p"][c]["towns"] if t[3:13] == NEUTRAL)
+except Exception as e:
+    print("snapshot weather not applied:", e)
 json.dump(out, open("/home/claude/usb/us.json", "w"), ensure_ascii=False, separators=(",", ":"))
 print("states", len(out["order"]), "towns", sum(len(p["towns"]) for p in out["p"].values()), "no-weather", nowx,
       "cams", sum(len(p["cams"]) for p in out["p"].values()), "links", len(ok), "+", len(auto),
