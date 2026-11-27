@@ -1,86 +1,178 @@
-run-5
-wx 1300 retry 0
-wx 1300 retry 1
-wx 1300 retry 2
-wx 1300 retry 3
-wx 1400 retry 0
-wx 1400 retry 1
-wx 1400 retry 2
-wx 1400 retry 3
-wx 1500 retry 0
-wx 1500 retry 1
-wx 1500 retry 2
-wx 1500 retry 3
-wx 1600 retry 0
-wx 1600 retry 1
-wx 1600 retry 2
-wx 1600 retry 3
-wx 1700 retry 0
-wx 1700 retry 1
-wx 1700 retry 2
-wx 1700 retry 3
-{
-"AK": [
-169,
-169
-],
-"AZ": [
-644,
-644
-],
-"CT": [
-347,
-347
-],
-"FL": "ERR fetch failed https://fl511.com/List/GetData/Cameras?query=%7B%22columns%22%3A%20%5B%7B%22data%22%3A%20null%2C%20%22name%22%3A%20%22%22%7D%2C%20%7B%22name%22%3A%20%22sortOrder%22%2C%20%22s%22%3A%20true",
-"GA": "ERR fetch failed https://511ga.org/List/GetData/Cameras?query=%7B%22columns%22%3A%20%5B%7B%22data%22%3A%20null%2C%20%22name%22%3A%20%22%22%7D%2C%20%7B%22name%22%3A%20%22sortOrder%22%2C%20%22s%22%3A%20true",
-"ID": [
-457,
-457
-],
-"LA": [
-336,
-336
-],
-"NE511": [
-363,
-363
-],
-"NC": [
-997,
-997
-],
-"NV": [
-649,
-649
-],
-"PA": [
-1397,
-1588
-],
-"UT": [
-2091,
-2091
-],
-"WI": [
-495,
-495
-],
-"AB_wr": [
-"rows",
-400,
-"total",
-1221
-],
-"cars_MN_cameras": 16,
-"cars_MN_events": 16,
-"cars_CO_cameras": 16,
-"cars_CO_events": 16,
-"cars_NY_cameras": 16,
-"cars_NY_events": 16,
-"WY_I25Cameras": 27631,
-"WY_I80Cameras": 49074,
-"WY_I90Cameras": 24348,
-"WY_NonInterstateCameras": 102326
-}
-wx 1300 / 1777
+run-6
+MN [('https://api-511x-mn.carsprogram.org/avl', 'avl'), ('https://api-511x-mn.carsprogram.org/cameras', 'cameras'), ('https://api-511x-mn.carsprogram.org/commercial', 'events'), ('https://api-511x-mn.carsprogram.org/custom', 'custom'), ('https://api-511x-mn.carsprogram.org/events', 'events'), ('https://api-511x-mn.carsprogram.org/events', 'weather'), ('https://api-511x-mn.carsprogram.org/evs', 'evs'), ('https://api-511x-mn.carsprogram.org/rest-areas', 'rest-areas'), ('https://api-511x-mn.carsprogram.org/rwis', 'rwis'), ('https://api-511x-mn.carsprogram.org/signs', 'signs')]
+   16 https://api-511x-mn.carsprogram.org/avl/api/avl {"healthy":true}
+   16 https://api-511x-mn.carsprogram.org/avl/api/v1/avl {"healthy":true}
+   16 https://api-511x-mn.carsprogram.org/avl/avl {"healthy":true}
+   ERR https://api-511x-mn.carsprogram.org/avl/avl/all HTTP Error 404: Not Found
+   16 https://api-511x-mn.carsprogram.org/avl/v1/avl {"healthy":true}
+   16 https://api-511x-mn.carsprogram.org/avl?collection=avl {"healthy":true}
+   16 https://api-511x-mn.carsprogram.org/cameras/api/cameras {"healthy":true}
+   16 https://api-511x-mn.carsprogram.org/cameras/api/v1/cameras {"healthy":true}
+   16 https://api-511x-mn.carsprogram.org/cameras/cameras {"healthy":true}
+   16 https://api-511x-mn.carsprogram.org/cameras/cameras/all {"healthy":true}
+   16 https://api-511x-mn.carsprogram.org/cameras/v1/cameras {"healthy":true}
+   16 https://api-511x-mn.carsprogram.org/cameras?collection=cameras {"healthy":true}
+   16 https://api-511x-mn.carsprogram.org/commercial/api/events {"healthy":true}
+   16 https://api-511x-mn.carsprogram.org/commercial/api/v1/events {"healthy":true}
+   16 https://api-511x-mn.carsprogram.org/commercial/events {"healthy":true}
+   16 https://api-511x-mn.carsprogram.org/commercial/events/all {"healthy":true}
+   16 https://api-511x-mn.carsprogram.org/commercial/v1/events {"healthy":true}
+   16 https://api-511x-mn.carsprogram.org/commercial?collection=events {"healthy":true}
+   16 https://api-511x-mn.carsprogram.org/custom/api/custom {"healthy":true}
+   16 https://api-511x-mn.carsprogram.org/custom/api/v1/custom {"healthy":true}
+   16 https://api-511x-mn.carsprogram.org/custom/custom {"healthy":true}
+   0 https://api-511x-mn.carsprogram.org/custom/custom/all 
+   16 https://api-511x-mn.carsprogram.org/custom/v1/custom {"healthy":true}
+   16 https://api-511x-mn.carsprogram.org/custom?collection=custom {"healthy":true}
+   16 https://api-511x-mn.carsprogram.org/events/api/events {"healthy":true}
+   16 https://api-511x-mn.carsprogram.org/events/api/v1/events {"healthy":true}
+   16 https://api-511x-mn.carsprogram.org/events/api/v1/weather {"healthy":true}
+   16 https://api-511x-mn.carsprogram.org/events/api/weather {"healthy":true}
+   16 https://api-511x-mn.carsprogram.org/events/events {"healthy":true}
+   ERR https://api-511x-mn.carsprogram.org/events/events/all fetch failed https://api-511x-mn.carsprogram.org/events/events/all
+   16 https://api-511x-mn.carsprogram.org/events/v1/events {"healthy":true}
+   16 https://api-511x-mn.carsprogram.org/events/v1/weather {"healthy":true}
+   16 https://api-511x-mn.carsprogram.org/events/weather {"healthy":true}
+   16 https://api-511x-mn.carsprogram.org/events/weather/all {"healthy":true}
+   16 https://api-511x-mn.carsprogram.org/events?collection=events {"healthy":true}
+   16 https://api-511x-mn.carsprogram.org/events?collection=weather {"healthy":true}
+   16 https://api-511x-mn.carsprogram.org/evs/api/evs {"healthy":true}
+   16 https://api-511x-mn.carsprogram.org/evs/api/v1/evs {"healthy":true}
+   16 https://api-511x-mn.carsprogram.org/evs/evs {"healthy":true}
+   ERR https://api-511x-mn.carsprogram.org/evs/evs/all fetch failed https://api-511x-mn.carsprogram.org/evs/evs/all
+   16 https://api-511x-mn.carsprogram.org/evs/v1/evs {"healthy":true}
+   16 https://api-511x-mn.carsprogram.org/evs?collection=evs {"healthy":true}
+   16 https://api-511x-mn.carsprogram.org/rest-areas/api/rest-areas {"healthy":true}
+   16 https://api-511x-mn.carsprogram.org/rest-areas/api/v1/rest-areas {"healthy":true}
+   16 https://api-511x-mn.carsprogram.org/rest-areas/rest-areas {"healthy":true}
+   ERR https://api-511x-mn.carsprogram.org/rest-areas/rest-areas/all HTTP Error 404: Not Found
+   16 https://api-511x-mn.carsprogram.org/rest-areas/v1/rest-areas {"healthy":true}
+   16 https://api-511x-mn.carsprogram.org/rest-areas?collection=rest-areas {"healthy":true}
+   16 https://api-511x-mn.carsprogram.org/rwis/api/rwis {"healthy":true}
+   16 https://api-511x-mn.carsprogram.org/rwis/api/v1/rwis {"healthy":true}
+   16 https://api-511x-mn.carsprogram.org/rwis/rwis {"healthy":true}
+   ERR https://api-511x-mn.carsprogram.org/rwis/rwis/all fetch failed https://api-511x-mn.carsprogram.org/rwis/rwis/all
+   16 https://api-511x-mn.carsprogram.org/rwis/v1/rwis {"healthy":true}
+   16 https://api-511x-mn.carsprogram.org/rwis?collection=rwis {"healthy":true}
+   16 https://api-511x-mn.carsprogram.org/signs/api/signs {"healthy":true}
+   16 https://api-511x-mn.carsprogram.org/signs/api/v1/signs {"healthy":true}
+   16 https://api-511x-mn.carsprogram.org/signs/signs {"healthy":true}
+   ERR https://api-511x-mn.carsprogram.org/signs/signs/all fetch failed https://api-511x-mn.carsprogram.org/signs/signs/all
+   16 https://api-511x-mn.carsprogram.org/signs/v1/signs {"healthy":true}
+   16 https://api-511x-mn.carsprogram.org/signs?collection=signs {"healthy":true}
+CO [('https://api-511x-co.carsprogram.org/avl', 'avl'), ('https://api-511x-co.carsprogram.org/cameras', 'cameras'), ('https://api-511x-co.carsprogram.org/custom', 'custom'), ('https://api-511x-co.carsprogram.org/events', 'events'), ('https://api-511x-co.carsprogram.org/events', 'weather'), ('https://api-511x-co.carsprogram.org/rest-areas', 'rest-areas'), ('https://api-511x-co.carsprogram.org/rwis', 'rwis'), ('https://api-511x-co.carsprogram.org/signs', 'signs'), ('https://api-511x-co.carsprogram.org/vsl-signs', 'signs')]
+   16 https://api-511x-co.carsprogram.org/avl/api/avl {"healthy":true}
+   16 https://api-511x-co.carsprogram.org/avl/api/v1/avl {"healthy":true}
+   16 https://api-511x-co.carsprogram.org/avl/avl {"healthy":true}
+   ERR https://api-511x-co.carsprogram.org/avl/avl/all HTTP Error 404: Not Found
+   16 https://api-511x-co.carsprogram.org/avl/v1/avl {"healthy":true}
+   16 https://api-511x-co.carsprogram.org/avl?collection=avl {"healthy":true}
+   16 https://api-511x-co.carsprogram.org/cameras/api/cameras {"healthy":true}
+   16 https://api-511x-co.carsprogram.org/cameras/api/v1/cameras {"healthy":true}
+   16 https://api-511x-co.carsprogram.org/cameras/cameras {"healthy":true}
+   16 https://api-511x-co.carsprogram.org/cameras/cameras/all {"healthy":true}
+   16 https://api-511x-co.carsprogram.org/cameras/v1/cameras {"healthy":true}
+   16 https://api-511x-co.carsprogram.org/cameras?collection=cameras {"healthy":true}
+   16 https://api-511x-co.carsprogram.org/custom/api/custom {"healthy":true}
+   16 https://api-511x-co.carsprogram.org/custom/api/v1/custom {"healthy":true}
+   16 https://api-511x-co.carsprogram.org/custom/custom {"healthy":true}
+   0 https://api-511x-co.carsprogram.org/custom/custom/all 
+   16 https://api-511x-co.carsprogram.org/custom/v1/custom {"healthy":true}
+   16 https://api-511x-co.carsprogram.org/custom?collection=custom {"healthy":true}
+   16 https://api-511x-co.carsprogram.org/events/api/events {"healthy":true}
+   16 https://api-511x-co.carsprogram.org/events/api/v1/events {"healthy":true}
+   16 https://api-511x-co.carsprogram.org/events/api/v1/weather {"healthy":true}
+   16 https://api-511x-co.carsprogram.org/events/api/weather {"healthy":true}
+   16 https://api-511x-co.carsprogram.org/events/events {"healthy":true}
+   ERR https://api-511x-co.carsprogram.org/events/events/all fetch failed https://api-511x-co.carsprogram.org/events/events/all
+   16 https://api-511x-co.carsprogram.org/events/v1/events {"healthy":true}
+   16 https://api-511x-co.carsprogram.org/events/v1/weather {"healthy":true}
+   16 https://api-511x-co.carsprogram.org/events/weather {"healthy":true}
+   16 https://api-511x-co.carsprogram.org/events/weather/all {"healthy":true}
+   16 https://api-511x-co.carsprogram.org/events?collection=events {"healthy":true}
+   16 https://api-511x-co.carsprogram.org/events?collection=weather {"healthy":true}
+   16 https://api-511x-co.carsprogram.org/rest-areas/api/rest-areas {"healthy":true}
+   16 https://api-511x-co.carsprogram.org/rest-areas/api/v1/rest-areas {"healthy":true}
+   16 https://api-511x-co.carsprogram.org/rest-areas/rest-areas {"healthy":true}
+   ERR https://api-511x-co.carsprogram.org/rest-areas/rest-areas/all HTTP Error 404: Not Found
+   16 https://api-511x-co.carsprogram.org/rest-areas/v1/rest-areas {"healthy":true}
+   16 https://api-511x-co.carsprogram.org/rest-areas?collection=rest-areas {"healthy":true}
+   16 https://api-511x-co.carsprogram.org/rwis/api/rwis {"healthy":true}
+   16 https://api-511x-co.carsprogram.org/rwis/api/v1/rwis {"healthy":true}
+   16 https://api-511x-co.carsprogram.org/rwis/rwis {"healthy":true}
+   ERR https://api-511x-co.carsprogram.org/rwis/rwis/all fetch failed https://api-511x-co.carsprogram.org/rwis/rwis/all
+   16 https://api-511x-co.carsprogram.org/rwis/v1/rwis {"healthy":true}
+   16 https://api-511x-co.carsprogram.org/rwis?collection=rwis {"healthy":true}
+   16 https://api-511x-co.carsprogram.org/signs/api/signs {"healthy":true}
+   16 https://api-511x-co.carsprogram.org/signs/api/v1/signs {"healthy":true}
+   16 https://api-511x-co.carsprogram.org/signs/signs {"healthy":true}
+   ERR https://api-511x-co.carsprogram.org/signs/signs/all fetch failed https://api-511x-co.carsprogram.org/signs/signs/all
+   16 https://api-511x-co.carsprogram.org/signs/v1/signs {"healthy":true}
+   16 https://api-511x-co.carsprogram.org/signs?collection=signs {"healthy":true}
+   16 https://api-511x-co.carsprogram.org/vsl-signs/api/signs {"healthy":true}
+   16 https://api-511x-co.carsprogram.org/vsl-signs/api/v1/signs {"healthy":true}
+   16 https://api-511x-co.carsprogram.org/vsl-signs/signs {"healthy":true}
+   16 https://api-511x-co.carsprogram.org/vsl-signs/signs/all {"healthy":true}
+   16 https://api-511x-co.carsprogram.org/vsl-signs/v1/signs {"healthy":true}
+   16 https://api-511x-co.carsprogram.org/vsl-signs?collection=signs {"healthy":true}
+NY [('https://api-511x-nysdot.carsprogram.org/cameras', 'cameras'), ('https://api-511x-nysdot.carsprogram.org/commercial', 'events'), ('https://api-511x-nysdot.carsprogram.org/events', 'events'), ('https://api-511x-nysdot.carsprogram.org/events', 'weather'), ('https://api-511x-nysdot.carsprogram.org/evs', 'evs'), ('https://api-511x-nysdot.carsprogram.org/rest-areas', 'rest-areas'), ('https://api-511x-nysdot.carsprogram.org/signs', 'signs'), ('https://api-511x-nysdot.stage.carstest.org/custom', 'custom'), ('https://nysdot-special-layers.carsprogram.org/api/v1/border-crossings', 'border-delays'), ('https://nysdot-special-layers.carsprogram.org/api/v1/travel-times', 'travel-times')]
+   16 https://api-511x-nysdot.carsprogram.org/cameras/api/cameras {"healthy":true}
+   16 https://api-511x-nysdot.carsprogram.org/cameras/api/v1/cameras {"healthy":true}
+   16 https://api-511x-nysdot.carsprogram.org/cameras/cameras {"healthy":true}
+   16 https://api-511x-nysdot.carsprogram.org/cameras/cameras/all {"healthy":true}
+   16 https://api-511x-nysdot.carsprogram.org/cameras/v1/cameras {"healthy":true}
+   16 https://api-511x-nysdot.carsprogram.org/cameras?collection=cameras {"healthy":true}
+   16 https://api-511x-nysdot.carsprogram.org/commercial/api/events {"healthy":true}
+   16 https://api-511x-nysdot.carsprogram.org/commercial/api/v1/events {"healthy":true}
+   16 https://api-511x-nysdot.carsprogram.org/commercial/events {"healthy":true}
+   16 https://api-511x-nysdot.carsprogram.org/commercial/events/all {"healthy":true}
+   16 https://api-511x-nysdot.carsprogram.org/commercial/v1/events {"healthy":true}
+   16 https://api-511x-nysdot.carsprogram.org/commercial?collection=events {"healthy":true}
+   16 https://api-511x-nysdot.carsprogram.org/events/api/events {"healthy":true}
+   16 https://api-511x-nysdot.carsprogram.org/events/api/v1/events {"healthy":true}
+   16 https://api-511x-nysdot.carsprogram.org/events/api/v1/weather {"healthy":true}
+   16 https://api-511x-nysdot.carsprogram.org/events/api/weather {"healthy":true}
+   16 https://api-511x-nysdot.carsprogram.org/events/events {"healthy":true}
+   ERR https://api-511x-nysdot.carsprogram.org/events/events/all fetch failed https://api-511x-nysdot.carsprogram.org/events/events/all
+   16 https://api-511x-nysdot.carsprogram.org/events/v1/events {"healthy":true}
+   16 https://api-511x-nysdot.carsprogram.org/events/v1/weather {"healthy":true}
+   16 https://api-511x-nysdot.carsprogram.org/events/weather {"healthy":true}
+   16 https://api-511x-nysdot.carsprogram.org/events/weather/all {"healthy":true}
+   16 https://api-511x-nysdot.carsprogram.org/events?collection=events {"healthy":true}
+   16 https://api-511x-nysdot.carsprogram.org/events?collection=weather {"healthy":true}
+   16 https://api-511x-nysdot.carsprogram.org/evs/api/evs {"healthy":true}
+   16 https://api-511x-nysdot.carsprogram.org/evs/api/v1/evs {"healthy":true}
+   16 https://api-511x-nysdot.carsprogram.org/evs/evs {"healthy":true}
+   ERR https://api-511x-nysdot.carsprogram.org/evs/evs/all fetch failed https://api-511x-nysdot.carsprogram.org/evs/evs/all
+   16 https://api-511x-nysdot.carsprogram.org/evs/v1/evs {"healthy":true}
+   16 https://api-511x-nysdot.carsprogram.org/evs?collection=evs {"healthy":true}
+   16 https://api-511x-nysdot.carsprogram.org/rest-areas/api/rest-areas {"healthy":true}
+   16 https://api-511x-nysdot.carsprogram.org/rest-areas/api/v1/rest-areas {"healthy":true}
+   16 https://api-511x-nysdot.carsprogram.org/rest-areas/rest-areas {"healthy":true}
+   ERR https://api-511x-nysdot.carsprogram.org/rest-areas/rest-areas/all HTTP Error 404: Not Found
+   16 https://api-511x-nysdot.carsprogram.org/rest-areas/v1/rest-areas {"healthy":true}
+   16 https://api-511x-nysdot.carsprogram.org/rest-areas?collection=rest-areas {"healthy":true}
+   16 https://api-511x-nysdot.carsprogram.org/signs/api/signs {"healthy":true}
+   16 https://api-511x-nysdot.carsprogram.org/signs/api/v1/signs {"healthy":true}
+   16 https://api-511x-nysdot.carsprogram.org/signs/signs {"healthy":true}
+   ERR https://api-511x-nysdot.carsprogram.org/signs/signs/all fetch failed https://api-511x-nysdot.carsprogram.org/signs/signs/all
+   16 https://api-511x-nysdot.carsprogram.org/signs/v1/signs {"healthy":true}
+   16 https://api-511x-nysdot.carsprogram.org/signs?collection=signs {"healthy":true}
+   16 https://api-511x-nysdot.stage.carstest.org/custom/api/custom {"healthy":true}
+   16 https://api-511x-nysdot.stage.carstest.org/custom/api/v1/custom {"healthy":true}
+   16 https://api-511x-nysdot.stage.carstest.org/custom/custom {"healthy":true}
+   0 https://api-511x-nysdot.stage.carstest.org/custom/custom/all 
+   16 https://api-511x-nysdot.stage.carstest.org/custom/v1/custom {"healthy":true}
+   16 https://api-511x-nysdot.stage.carstest.org/custom?collection=custom {"healthy":true}
+   ERR https://nysdot-special-layers.carsprogram.org/api/v1/border-crossings/api/border-delays HTTP Error 404: Not Found
+   ERR https://nysdot-special-layers.carsprogram.org/api/v1/border-crossings/api/v1/border-delays HTTP Error 404: Not Found
+   ERR https://nysdot-special-layers.carsprogram.org/api/v1/border-crossings/border-delays HTTP Error 404: Not Found
+   ERR https://nysdot-special-layers.carsprogram.org/api/v1/border-crossings/border-delays/all HTTP Error 404: Not Found
+   ERR https://nysdot-special-layers.carsprogram.org/api/v1/border-crossings/v1/border-delays HTTP Error 404: Not Found
+   ERR https://nysdot-special-layers.carsprogram.org/api/v1/border-crossings?collection=border-delays HTTP Error 404: Not Found
+   ERR https://nysdot-special-layers.carsprogram.org/api/v1/travel-times/api/travel-times HTTP Error 404: Not Found
+   ERR https://nysdot-special-layers.carsprogram.org/api/v1/travel-times/api/v1/travel-times HTTP Error 404: Not Found
+   ERR https://nysdot-special-layers.carsprogram.org/api/v1/travel-times/travel-times HTTP Error 404: Not Found
+   ERR https://nysdot-special-layers.carsprogram.org/api/v1/travel-times/travel-times/all HTTP Error 404: Not Found
+   ERR https://nysdot-special-layers.carsprogram.org/api/v1/travel-times/v1/travel-times HTTP Error 404: Not Found
+   ERR https://nysdot-special-layers.carsprogram.org/api/v1/travel-times?collection=travel-times HTTP Error 404: Not Found
