@@ -1,2 +1,2 @@
-echo run-3
-python3 build/scan3.py
+echo run-4
+python3 build/scan4.py
