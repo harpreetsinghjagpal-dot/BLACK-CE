@@ -285,8 +285,7 @@ for c, s in T.items():
         for t in (ts[0], ts[-1]):
             ends.append((c, no, t, s["towns"][t]))
 have = {(x[0], x[1], x[2], x[3]) for x in ok} | {(x[2], x[3], x[0], x[1]) for x in ok}
-auto = []
-for c, no, t, p in ends:
+def nearest(c, no, t, p):
     best = None
     for c2, no2, t2, p2 in ends:
         if c2 == c or no2 != no:
@@ -294,12 +293,22 @@ for c, no, t, p in ends:
         d = km(p[0], p[1], p2[0], p2[1])
         if d <= 160 and (best is None or d < best[0]):
             best = (d, c2, t2)
-    if best:
-        d, c2, t2 = best
-        key = tuple(sorted([(c, t), (c2, t2)]))
-        if key in {tuple(sorted([(x[0], x[1]), (x[2], x[3])])) for x in auto} or (c, t, c2, t2) in have:
-            continue
-        auto.append([c, t, c2, t2, max(1, round(d * 1.15))])
+    return best
+auto, seen = [], set()
+pos = {(c, t): p for c, no, t, p in ends}
+for c, no, t, p in ends:
+    nb = nearest(c, no, t, p)
+    if not nb:
+        continue
+    d, c2, t2 = nb
+    back = nearest(c2, no, t2, pos[(c2, t2)])
+    if not back or (back[1], back[2]) != (c, t):  # only mutual nearest ends
+        continue
+    key = tuple(sorted([(c, t), (c2, t2)]))
+    if key in seen or (c, t, c2, t2) in have:
+        continue
+    seen.add(key)
+    auto.append([c, t, c2, t2, max(1, round(d * 1.15))])
 out["xl"] = ok + auto
 json.dump(out, open("/home/claude/usb/us.json", "w"), ensure_ascii=False, separators=(",", ":"))
 print("states", len(out["order"]), "towns", sum(len(p["towns"]) for p in out["p"].values()), "no-weather", nowx,
