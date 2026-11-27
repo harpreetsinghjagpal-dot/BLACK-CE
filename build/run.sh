@@ -1,2 +1,2 @@
-echo run-2
-python3 build/collect.py all
+echo run-3
+python3 build/scan3.py
