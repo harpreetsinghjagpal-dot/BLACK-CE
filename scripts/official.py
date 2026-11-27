@@ -32,10 +32,19 @@ def get(url, timeout=40):
         return json.loads(r.read().decode("utf-8", "replace"))
 
 
-def ibi_list(host, name):
-    q = json.dumps({"columns": [{"data": None, "name": ""}, {"name": "sortOrder", "s": True}],
-                    "start": 0, "length": 5000})
-    return get(f"{host}/List/GetData/{name}?query={urllib.parse.quote(q)}&lang=en").get("data", [])
+def ibi_list(host, name, cap=6000):
+    """These 511 sites return at most 100 rows per request, so page through the list."""
+    out, start = [], 0
+    while True:
+        q = json.dumps({"columns": [{"data": None, "name": ""}, {"name": "sortOrder", "s": True}],
+                        "start": start, "length": 100})
+        j = get(f"{host}/List/GetData/{name}?query={urllib.parse.quote(q)}&lang=en")
+        d = j.get("data", []) or []
+        out += d
+        total = j.get("recordsTotal") or 0
+        if not d or len(out) >= total or len(out) >= cap:
+            return out
+        start += len(d)
 
 
 def clean(s, n=240):
@@ -248,6 +257,11 @@ def main():
             if prov in old.get("p", {}) and out["t"] - old.get("t", 0) < 6 * 3600e3:
                 out["p"][prov] = old["p"][prov]
                 out["src"][prov] = label
+    try:  # USA (states): separate module so a US problem never stops the Canadian reports
+        import us_official
+        us_official.collect(out, old)
+    except Exception as e:
+        out["err"]["US"] = str(e)[:200]
     for k, v in out["p"].items():  # drop exact duplicates
         seen, keep = set(), []
         for r in v:
