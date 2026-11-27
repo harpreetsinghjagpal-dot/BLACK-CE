@@ -1,9 +1,86 @@
-run-4
-MN {'normalCameras': (None, 'Expecting value: line 1 column 1 (char 0)'), 'incidents': (None, 'Expecting value: line 1 column 1 (char 0)'), 'closures': (None, 'Expecting value: line 1 column 1 (char 0)'), 'roadReports': (None, 'Expecting value: line 1 column 1 (char 0)'), 'winterDriving': (None, 'Expecting value: line 1 column 1 (char 0)'), 'roadConditions': (None, 'Expecting value: line 1 column 1 (char 0)'), 'weatherWarnings': (None, 'Expecting value: line 1 column 1 (char 0)'), 'constructionClosures': (None, 'Expecting value: line 1 column 1 (char 0)'), 'construction': (None, 'Expecting value: line 1 column 1 (char 0)'), 'towingProhibited': (None, 'Expecting value: line 1 column 1 (char 0)'), 'truckersReports': (None, 'Expecting value: line 1 column 1 (char 0)'), 'mountainPasses': (None, 'Expecting value: line 1 column 1 (char 0)'), 'chainLaws': (None, 'Expecting value: line 1 column 1 (char 0)'), 'plowCameras': (None, 'Expecting value: line 1 column 1 (char 0)'), 'roadWeather': (None, 'Expecting value: line 1 column 1 (char 0)'), 'winterRoads': (None, 'Expecting value: line 1 column 1 (char 0)'), 'weatherReports': (None, 'Expecting value: line 1 column 1 (char 0)'), 'restAreas': (None, 'Expecting value: line 1 column 1 (char 0)'), 'alerts': (None, 'Expecting value: line 1 column 1 (char 0)'), 'flooding': (None, 'Expecting value: line 1 column 1 (char 0)'), 'futureRoadwork': (None, 'Expecting value: line 1 column 1 (char 0)'), 'roadwork': (None, 'Expecting value: line 1 column 1 (char 0)'), 'winterRoadConditions': (None, 'Expecting value: line 1 column 1 (char 0)'), 'signs': (None, 'Expecting value: line 1 column 1 (char 0)'), 'messageSigns': (None, 'Expecting value: line 1 column 1 (char 0)'), 'weatherStations': (None, 'Expecting value: line 1 column 1 (char 0)'), 'rwis': (None, 'Expecting value: line 1 column 1 (char 0)'), 'trafficSpeeds': (None, 'Expecting value: line 1 column 1 (char 0)'), 'crashes': (None, 'Expecting value: line 1 column 1 (char 0)'), 'truckRestrictions': (None, 'Expecting value: line 1 column 1 (char 0)')}
-CO {'normalCameras': (None, 'Expecting value: line 1 column 1 (char 0)'), 'incidents': (None, 'Expecting value: line 1 column 1 (char 0)'), 'closures': (None, 'Expecting value: line 1 column 1 (char 0)'), 'roadReports': (None, 'Expecting value: line 1 column 1 (char 0)'), 'winterDriving': (None, 'Expecting value: line 1 column 1 (char 0)'), 'roadConditions': (None, 'Expecting value: line 1 column 1 (char 0)'), 'weatherWarnings': (None, 'Expecting value: line 1 column 1 (char 0)'), 'constructionClosures': (None, 'Expecting value: line 1 column 1 (char 0)'), 'construction': (None, 'Expecting value: line 1 column 1 (char 0)'), 'towingProhibited': (None, 'Expecting value: line 1 column 1 (char 0)'), 'truckersReports': (None, 'Expecting value: line 1 column 1 (char 0)'), 'mountainPasses': (None, 'Expecting value: line 1 column 1 (char 0)'), 'chainLaws': (None, 'Expecting value: line 1 column 1 (char 0)'), 'plowCameras': (None, 'Expecting value: line 1 column 1 (char 0)'), 'roadWeather': (None, 'Expecting value: line 1 column 1 (char 0)'), 'winterRoads': (None, 'Expecting value: line 1 column 1 (char 0)'), 'weatherReports': (None, 'Expecting value: line 1 column 1 (char 0)'), 'restAreas': (None, 'Expecting value: line 1 column 1 (char 0)'), 'alerts': (None, 'Expecting value: line 1 column 1 (char 0)'), 'flooding': (None, 'Expecting value: line 1 column 1 (char 0)'), 'futureRoadwork': (None, 'Expecting value: line 1 column 1 (char 0)'), 'roadwork': (None, 'Expecting value: line 1 column 1 (char 0)'), 'winterRoadConditions': (None, 'Expecting value: line 1 column 1 (char 0)'), 'signs': (None, 'Expecting value: line 1 column 1 (char 0)'), 'messageSigns': (None, 'Expecting value: line 1 column 1 (char 0)'), 'weatherStations': (None, 'Expecting value: line 1 column 1 (char 0)'), 'rwis': (None, 'Expecting value: line 1 column 1 (char 0)'), 'trafficSpeeds': (None, 'Expecting value: line 1 column 1 (char 0)'), 'crashes': (None, 'Expecting value: line 1 column 1 (char 0)'), 'truckRestrictions': (None, 'Expecting value: line 1 column 1 (char 0)')}
-NY {'normalCameras': (None, 'Expecting value: line 1 column 1 (char 0)'), 'incidents': (None, 'Expecting value: line 1 column 1 (char 0)'), 'closures': (None, 'Expecting value: line 1 column 1 (char 0)'), 'roadReports': (None, 'Expecting value: line 1 column 1 (char 0)'), 'winterDriving': (None, 'Expecting value: line 1 column 1 (char 0)'), 'roadConditions': (None, 'Expecting value: line 1 column 1 (char 0)'), 'weatherWarnings': (None, 'Expecting value: line 1 column 1 (char 0)'), 'constructionClosures': (None, 'Expecting value: line 1 column 1 (char 0)'), 'construction': (None, 'Expecting value: line 1 column 1 (char 0)'), 'towingProhibited': (None, 'Expecting value: line 1 column 1 (char 0)'), 'truckersReports': (None, 'Expecting value: line 1 column 1 (char 0)'), 'mountainPasses': (None, 'Expecting value: line 1 column 1 (char 0)'), 'chainLaws': (None, 'Expecting value: line 1 column 1 (char 0)'), 'plowCameras': (None, 'Expecting value: line 1 column 1 (char 0)'), 'roadWeather': (None, 'Expecting value: line 1 column 1 (char 0)'), 'winterRoads': (None, 'Expecting value: line 1 column 1 (char 0)'), 'weatherReports': (None, 'Expecting value: line 1 column 1 (char 0)'), 'restAreas': (None, 'Expecting value: line 1 column 1 (char 0)'), 'alerts': (None, 'Expecting value: line 1 column 1 (char 0)'), 'flooding': (None, 'Expecting value: line 1 column 1 (char 0)'), 'futureRoadwork': (None, 'Expecting value: line 1 column 1 (char 0)'), 'roadwork': (None, 'Expecting value: line 1 column 1 (char 0)'), 'winterRoadConditions': (None, 'Expecting value: line 1 column 1 (char 0)'), 'signs': (None, 'Expecting value: line 1 column 1 (char 0)'), 'messageSigns': (None, 'Expecting value: line 1 column 1 (char 0)'), 'weatherStations': (None, 'Expecting value: line 1 column 1 (char 0)'), 'rwis': (None, 'Expecting value: line 1 column 1 (char 0)'), 'trafficSpeeds': (None, 'Expecting value: line 1 column 1 (char 0)'), 'crashes': (None, 'Expecting value: line 1 column 1 (char 0)'), 'truckRestrictions': (None, 'Expecting value: line 1 column 1 (char 0)')}
-IA {'normalCameras': (852, ''), 'incidents': (0, ''), 'closures': (0, ''), 'roadReports': (0, ''), 'winterDriving': (595, ''), 'roadConditions': (0, ''), 'weatherWarnings': (0, ''), 'constructionClosures': (0, ''), 'construction': (0, ''), 'towingProhibited': (0, ''), 'truckersReports': (104, ''), 'mountainPasses': (0, ''), 'chainLaws': (0, ''), 'plowCameras': (2, ''), 'roadWeather': (0, ''), 'winterRoads': (0, ''), 'weatherReports': (0, ''), 'restAreas': (54, ''), 'alerts': (0, ''), 'flooding': (0, ''), 'futureRoadwork': (0, ''), 'roadwork': (0, ''), 'winterRoadConditions': (0, ''), 'signs': (0, ''), 'messageSigns': (0, ''), 'weatherStations': (0, ''), 'rwis': (0, ''), 'trafficSpeeds': (0, ''), 'crashes': (0, ''), 'truckRestrictions': (0, '')}
-IN {'normalCameras': (730, ''), 'incidents': (43, ''), 'closures': (0, ''), 'roadReports': (0, ''), 'winterDriving': (0, ''), 'roadConditions': (0, ''), 'weatherWarnings': (0, ''), 'constructionClosures': (0, ''), 'construction': (307, ''), 'towingProhibited': (0, ''), 'truckersReports': (331, ''), 'mountainPasses': (0, ''), 'chainLaws': (0, ''), 'plowCameras': (0, ''), 'roadWeather': (0, ''), 'winterRoads': (0, ''), 'weatherReports': (0, ''), 'restAreas': (31, ''), 'alerts': (0, ''), 'flooding': (0, ''), 'futureRoadwork': (0, ''), 'roadwork': (0, ''), 'winterRoadConditions': (0, ''), 'signs': (0, ''), 'messageSigns': (0, ''), 'weatherStations': (0, ''), 'rwis': (0, ''), 'trafficSpeeds': (0, ''), 'crashes': (0, ''), 'truckRestrictions': (0, '')}
-KS {'normalCameras': (612, ''), 'incidents': (0, ''), 'closures': (0, ''), 'roadReports': (5, ''), 'winterDriving': (0, ''), 'roadConditions': (0, ''), 'weatherWarnings': (0, ''), 'constructionClosures': (0, ''), 'construction': (0, ''), 'towingProhibited': (0, ''), 'truckersReports': (92, ''), 'mountainPasses': (0, ''), 'chainLaws': (0, ''), 'plowCameras': (0, ''), 'roadWeather': (0, ''), 'winterRoads': (0, ''), 'weatherReports': (0, ''), 'restAreas': (44, ''), 'alerts': (0, ''), 'flooding': (0, ''), 'futureRoadwork': (0, ''), 'roadwork': (0, ''), 'winterRoadConditions': (0, ''), 'signs': (0, ''), 'messageSigns': (0, ''), 'weatherStations': (0, ''), 'rwis': (0, ''), 'trafficSpeeds': (0, ''), 'crashes': (0, ''), 'truckRestrictions': (0, '')}
-MA {'normalCameras': (311, ''), 'incidents': (0, ''), 'closures': (0, ''), 'roadReports': (9, ''), 'winterDriving': (0, ''), 'roadConditions': (0, ''), 'weatherWarnings': (0, ''), 'constructionClosures': (0, ''), 'construction': (0, ''), 'towingProhibited': (0, ''), 'truckersReports': (135, ''), 'mountainPasses': (0, ''), 'chainLaws': (0, ''), 'plowCameras': (0, ''), 'roadWeather': (0, ''), 'winterRoads': (0, ''), 'weatherReports': (0, ''), 'restAreas': (126, ''), 'alerts': (0, ''), 'flooding': (0, ''), 'futureRoadwork': (0, ''), 'roadwork': (0, ''), 'winterRoadConditions': (0, ''), 'signs': (0, ''), 'messageSigns': (0, ''), 'weatherStations': (0, ''), 'rwis': (0, ''), 'trafficSpeeds': (0, ''), 'crashes': (0, ''), 'truckRestrictions': (0, '')}
-NE {'normalCameras': (343, ''), 'incidents': (0, ''), 'closures': (0, ''), 'roadReports': (14, ''), 'winterDriving': (444, ''), 'roadConditions': (0, ''), 'weatherWarnings': (0, ''), 'constructionClosures': (0, ''), 'construction': (0, ''), 'towingProhibited': (0, ''), 'truckersReports': (79, ''), 'mountainPasses': (0, ''), 'chainLaws': (0, ''), 'plowCameras': (0, ''), 'roadWeather': (0, ''), 'winterRoads': (0, ''), 'weatherReports': (0, ''), 'restAreas': (22, ''), 'alerts': (0, ''), 'flooding': (0, ''), 'futureRoadwork': (0, ''), 'roadwork': (0, ''), 'winterRoadConditions': (0, ''), 'signs': (0, ''), 'messageSigns': (0, ''), 'weatherStations': (0, ''), 'rwis': (0, ''), 'trafficSpeeds': (0, ''), 'crashes': (0, ''), 'truckRestrictions': (0, '')}
+run-5
+wx 1300 retry 0
+wx 1300 retry 1
+wx 1300 retry 2
+wx 1300 retry 3
+wx 1400 retry 0
+wx 1400 retry 1
+wx 1400 retry 2
+wx 1400 retry 3
+wx 1500 retry 0
+wx 1500 retry 1
+wx 1500 retry 2
+wx 1500 retry 3
+wx 1600 retry 0
+wx 1600 retry 1
+wx 1600 retry 2
+wx 1600 retry 3
+wx 1700 retry 0
+wx 1700 retry 1
+wx 1700 retry 2
+wx 1700 retry 3
+{
+"AK": [
+169,
+169
+],
+"AZ": [
+644,
+644
+],
+"CT": [
+347,
+347
+],
+"FL": "ERR fetch failed https://fl511.com/List/GetData/Cameras?query=%7B%22columns%22%3A%20%5B%7B%22data%22%3A%20null%2C%20%22name%22%3A%20%22%22%7D%2C%20%7B%22name%22%3A%20%22sortOrder%22%2C%20%22s%22%3A%20true",
+"GA": "ERR fetch failed https://511ga.org/List/GetData/Cameras?query=%7B%22columns%22%3A%20%5B%7B%22data%22%3A%20null%2C%20%22name%22%3A%20%22%22%7D%2C%20%7B%22name%22%3A%20%22sortOrder%22%2C%20%22s%22%3A%20true",
+"ID": [
+457,
+457
+],
+"LA": [
+336,
+336
+],
+"NE511": [
+363,
+363
+],
+"NC": [
+997,
+997
+],
+"NV": [
+649,
+649
+],
+"PA": [
+1397,
+1588
+],
+"UT": [
+2091,
+2091
+],
+"WI": [
+495,
+495
+],
+"AB_wr": [
+"rows",
+400,
+"total",
+1221
+],
+"cars_MN_cameras": 16,
+"cars_MN_events": 16,
+"cars_CO_cameras": 16,
+"cars_CO_events": 16,
+"cars_NY_cameras": 16,
+"cars_NY_events": 16,
+"WY_I25Cameras": 27631,
+"WY_I80Cameras": 49074,
+"WY_I90Cameras": 24348,
+"WY_NonInterstateCameras": 102326
+}
+wx 1300 / 1777
