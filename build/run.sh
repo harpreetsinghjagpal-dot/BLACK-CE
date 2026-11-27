@@ -1,2 +1,2 @@
-echo run-5
-python3 build/job5.py
+echo run-6
+python3 build/job6.py
