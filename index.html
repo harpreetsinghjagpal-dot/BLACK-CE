@@ -333,7 +333,9 @@ async function ntPoll(){const r=await fetch(NT+"/json?poll=1&since=all",{cache:"
   const cut=Date.now()-13*36e5;NMSG=NMSG.filter(m=>m.at>cut);ntAgg()}
 async function ntSend(o){const r=await fetch(NT,{method:"POST",body:JSON.stringify({...o,id:ME})});if(!r.ok){const e=new Error("send");e.code=r.status===429?"rate":"";throw e}
   const j=await r.json().catch(()=>null);if(j)ntParse(j);ntAgg()}
-const pubChip=k=>{const v=VOTES[k]||{},w=VOTES[k+"|tf"]||{};const a=["r","y","g"].filter(x=>v[x]).map(x=>`<span class="dot" style="--c:var(--${VC[x].k})"></span>${v[x]}`),b=["c","j"].filter(x=>w[x]).map(x=>`${x==="c"?"⛔":"🚗"}${w[x]}`);return [...a,...b].join(" ")||"—"};
+const pubSum=k=>{if(k.includes("|seg|"))return [VOTES[k]||{},VOTES[k+"|tf"]||{}];const v={},w={};
+  for(const [kk,o] of Object.entries(VOTES)){if(kk!==k&&kk!==k+"|tf"&&!kk.startsWith(k+"|seg|"))continue;const t=kk.endsWith("|tf")?w:v;for(const [x,n] of Object.entries(o))t[x]=(t[x]||0)+n}return [v,w]};
+const pubChip=k=>{const [v,w]=pubSum(k);const a=["r","y","g"].filter(x=>v[x]).map(x=>`<span class="dot" style="--c:var(--${VC[x].k})"></span>${v[x]}`),b=["c","j"].filter(x=>w[x]).map(x=>`${x==="c"?"⛔":"🚗"}${w[x]}`);return [...a,...b].join(" ")||"—"};
 const ago=ms=>{const m=Math.round((Date.now()-ms)/60000);return m<1?tx("now"):m<60?tx("minAgo",m):m<1440?tx("hrAgo",Math.round(m/60)):tx("dayAgo",Math.round(m/1440))};
 const roadKey=(c,h)=>c+"|hw|"+h.no+"|"+h.name;
 function rbHTML(el){const k=el.dataset.k,v=VOTES[k]||{},tot=(v.r||0)+(v.y||0)+(v.g||0),mine=MYV[k]&&MYV[k].d===today()?MYV[k].v:null,k2=k+"|tf",v2=VOTES[k2]||{},mine2=MYV[k2]&&MYV[k2].d===today()?MYV[k2].v:null;
@@ -345,6 +347,7 @@ function rbHTML(el){const k=el.dataset.k,v=VOTES[k]||{},tot=(v.r||0)+(v.y||0)+(v
    ${pubState==="off"?(STANDALONE?'<p class="pmsg">'+esc(tx("pubInCard"))+'</p>':'<p class="pmsg">'+esc(tx("pubSignin"))+'</p>'):""}
    ${pubState==="slow"?'<p class="pmsg">'+esc(tx("pubSlow"))+'</p>':""}
    ${pubMsg&&pubMsgK===k?`<p class="pmsg">${esc(pubMsg)}</p>`:""}
+   ${el.dataset.seg?`<div style="font-weight:700;margin-top:6px">📍 ${esc(el.dataset.seg)}</div>`:""}
    <div class="note">${esc(tx("howHw",el.dataset.no))}</div>
    <div class="vbtns">${["r","y","g"].map(x=>`<button type="button" class="vb ${mine===x?"on":""}" data-v="${x}" style="--c:var(--${VC[x].k})" ${can&&!busyW?"":"disabled"}>${esc(VC[x].t)}<br><small>${esc(VC[x].s)}</small></button>`).join("")}</div>
    ${mine?'<div class="note">'+esc(tx("mineSaved"))+'</div>':""}
@@ -411,9 +414,13 @@ function locate(la,lo,hd,acc){let best=null;
   const p=D.p[best.prov];let near=null,nd=1e9;for(const t of p.T){const d=km(la,lo,t.la,t.lo);if(d<nd){nd=d;near=t}}
   let ahead=null;if(hd!=null&&best.d<5){const dA=Math.abs(((bearing(la,lo,best.A.la,best.A.lo)-hd+540)%360)-180),dB=Math.abs(((bearing(la,lo,best.B.la,best.B.lo)-hd+540)%360)-180);ahead=dA<dB?best.A:best.B}
   return {...best,la,lo,hd,acc,near,nd,ahead}}
+function gpsSeg(){if(!GPS||!D)return null;const p=D.p[GPS.prov];let h=ROAD&&ROAD.on&&ROAD.no&&p.H.find(x=>x.no===ROAD.no);if(!h)h=p.H[GPS.hi];if(!h)return null;
+  let j=h===p.H[GPS.hi]?GPS.j:-1;if(j<0){let bd=1e9;for(let i=0;i<h.towns.length-1;i++){const d=segDist(GPS.la,GPS.lo,p.T[h.towns[i]],p.T[h.towns[i+1]]).d;if(d<bd){bd=d;j=i}}}
+  const A=p.T[h.towns[j]],B=p.T[h.towns[j+1]];if(!A||!B)return {h,k:roadKey(GPS.prov,h)};
+  return {h,A,B,k:roadKey(GPS.prov,h)+"|seg|"+A.n+"|"+B.n}}
 function gpsRb(bar){let rb=$("gpsrb");if(!rb){bar.innerHTML='<div id="gpsinfo"></div><div class="rb" id="gpsrb" hidden></div>';rb=$("gpsrb")}
-  if(!GPS){rb.hidden=true;return}const p=D.p[GPS.prov];let h=ROAD&&ROAD.on&&ROAD.no&&p.H.find(x=>x.no===ROAD.no);if(!h)h=p.H[GPS.hi];if(!h){rb.hidden=true;return}
-  const k=roadKey(GPS.prov,h);rb.hidden=false;if(rb.dataset.k!==k||!rb.innerHTML){rb.dataset.k=k;rb.dataset.no=h.no;renderPub()}}
+  if(!GPS){rb.hidden=true;return}const sg=gpsSeg();if(!sg){rb.hidden=true;return}const h=sg.h,k=sg.k;
+  rb.hidden=false;if(rb.dataset.k!==k||!rb.innerHTML){rb.dataset.k=k;rb.dataset.no=h.no;rb.dataset.seg=sg.A?sg.A.n+" ↔ "+sg.B.n:"";renderPub()}}
 function gpsBar(){const bar0=$("gpsbar");if(!GPS&&!WATCH&&!manual){bar0.hidden=true;return}bar0.hidden=false;if(!$("gpsinfo"))gpsRb(bar0);const bar=$("gpsinfo");
   const selHtml=`<label class="note" for="msel" style="display:block;margin-top:8px">${esc(tx("orPick"))}</label><select id="msel"><option value="">${esc(tx("choose"))}</option>${D.order.map(c=>`<optgroup label="${esc(pn(D.p[c]))}">${D.p[c].T.map(x=>`<option value="${c}|${esc(x.n)}">${esc(x.n)}</option>`).join("")}</optgroup>`).join("")}</select>`;
   const bindSel=()=>{const ms=$("msel");if(ms)ms.onchange=e=>{const[c,n]=e.target.value.split("|");const x=D.p[c]&&D.p[c].T.find(q=>q.n===n);if(x){manual=true;ROAD=undefined;onFix(x.la,x.lo,null,0,true);if(LM)LM.centered=false,lmMe()}}};
@@ -589,7 +596,7 @@ function trackHTML(){if(!GPS)return"";const p=D.p[GPS.prov];let s="";
   return s}
 function fsBar(){if(!LM||!LM.fs)return;const b=$("fsbar");if(!GPS){b.hidden=true;return}b.hidden=false;
   const t=GPS.ahead||GPS.near,l=level(t.r.s);
-  const p=D.p[GPS.prov];let h=ROAD&&ROAD.on&&ROAD.no&&p.H.find(x=>x.no===ROAD.no);if(!h)h=p.H[GPS.hi];const rk=h?roadKey(GPS.prov,h):"";
+  const sg=gpsSeg(),rk=sg?sg.k:"";
   b.innerHTML=trackHTML()+`<br><span style="color:var(--${l.k});font-weight:700">${esc(tx("riskTo",t.n,tx(l.i.replace("lv","rd"))))}</span>${t.fc?` <span class="m">${fcBadge(t.fc.r.s)} ${esc(fmtHour(t.fc.at))}</span>`:""}${rk?`<br><span class="m">${esc(tx("pubBtn"))}</span> <span class="pc" data-k="${esc(rk)}">${pubChip(rk)}</span>`:""}`}
 function lmMe(){if(!LM||!LM.m)return;LM.me.clearLayers();LM.cur.clearLayers();if(!GPS)return;const ll=[GPS.la,GPS.lo];
   if(ROAD&&ROAD.on&&ROAD.g)LL.polyline(ROAD.g.map(q=>[q.lat,q.lon]),{color:"#2f7cf6",weight:11,opacity:.45,interactive:false}).addTo(LM.cur);
