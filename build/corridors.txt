@@ -1,0 +1,457 @@
+# State | English name | Punjabi name | official traveller site
+# then lines: highway | display name | towns in order (comma separated)
+# A town written as Name@lat/lon uses those coordinates instead of the lookup.
+
+@AK|Alaska|ਅਲਾਸਕਾ|https://511.alaska.gov
+AK-1|Sterling Hwy|Homer,Soldotna,Cooper Landing,Girdwood,Anchorage
+AK-9|Seward Hwy|Seward,Moose Pass,Cooper Landing
+AK-1|Glenn Hwy|Anchorage,Eagle River,Palmer,Sutton-Alpine,Glennallen
+AK-1|Tok Cutoff|Glennallen,Gakona,Tok
+AK-3|Parks Hwy|Palmer,Wasilla,Willow,Trapper Creek,Cantwell,Healy,Nenana,Fairbanks
+AK-2|Alaska Hwy|Fairbanks,North Pole,Delta Junction,Tok
+AK-4|Richardson Hwy|Valdez,Glennallen,Paxson,Delta Junction
+AK-2|Elliott Hwy|Fairbanks,Livengood
+AK-11|Dalton Hwy|Livengood,Coldfoot,Deadhorse
+
+@WA|Washington|ਵਾਸ਼ਿੰਗਟਨ|https://wsdot.com/travel/real-time/
+I-5|Interstate 5|Blaine,Bellingham,Mount Vernon,Everett,Seattle,Tacoma,Olympia,Centralia,Kelso,Vancouver
+I-90|Snoqualmie Pass|Seattle,Issaquah,North Bend,Snoqualmie Pass,Cle Elum,Ellensburg,Vantage,Moses Lake,Ritzville,Sprague,Spokane
+I-82|Interstate 82|Ellensburg,Yakima,Union Gap,Sunnyside,Prosser,Richland,Kennewick
+US-2|Stevens Pass|Everett,Monroe,Skykomish,Leavenworth,Wenatchee,Waterville,Coulee City,Davenport,Spokane
+US-97|US 97 / Blewett Pass|Oroville,Omak,Chelan,Wenatchee,Ellensburg,Yakima,Toppenish,Goldendale
+US-12|White Pass|Yakima,Naches,Packwood,Morton,Mossyrock,Centralia
+WA-20|North Cascades|Burlington,Sedro-Woolley,Concrete,Marblemount,Winthrop,Twisp,Okanogan
+US-395|US 395|Kennewick,Pasco,Connell,Ritzville,Spokane,Colville
+US-101|Olympic Peninsula|Olympia,Shelton,Quilcene,Sequim,Port Angeles,Forks,Aberdeen,Raymond
+US-195|Palouse|Spokane,Colfax,Pullman
+
+@OR|Oregon|ਓਰੇਗਨ|https://tripcheck.com
+I-5|Interstate 5|Portland,Salem,Albany,Eugene,Roseburg,Grants Pass,Medford,Ashland
+I-84|Columbia Gorge / Blue Mtns|Portland,Hood River,The Dalles,Biggs Junction,Boardman,Hermiston,Pendleton,La Grande,Baker City,Ontario
+US-26|Mt Hood|Portland,Sandy,Government Camp,Madras
+US-97|US 97|Biggs Junction,Madras,Redmond,Bend,La Pine,Chemult,Chiloquin,Klamath Falls
+US-20|Santiam Pass|Albany,Sweet Home,Sisters,Bend,Burns,Ontario
+OR-58|Willamette Pass|Eugene,Oakridge,Chemult
+US-101|Oregon Coast|Astoria,Tillamook,Lincoln City,Newport,Florence,Coos Bay,Gold Beach,Brookings
+US-395|US 395|Pendleton,John Day,Burns,Lakeview
+
+@CA|California|ਕੈਲੀਫ਼ੋਰਨੀਆ|https://quickmap.dot.ca.gov
+I-5|Interstate 5|Yreka,Weed,Mount Shasta,Dunsmuir,Redding,Red Bluff,Corning,Williams,Woodland,Sacramento,Lodi,Stockton,Patterson,Santa Nella,Kettleman City,Lost Hills,Buttonwillow,Lebec,Santa Clarita,Los Angeles,Irvine,Oceanside,San Diego
+I-80|Donner Pass|San Francisco,Oakland,Vallejo,Fairfield,Davis,Sacramento,Roseville,Auburn,Colfax,Soda Springs,Truckee
+US-50|Echo Summit|Sacramento,Placerville,Pollock Pines,Kyburz,South Lake Tahoe
+US-395|Eastern Sierra|Victorville,Inyokern,Olancha,Lone Pine,Independence,Big Pine,Bishop,Mammoth Lakes,Lee Vining,Bridgeport,Coleville
+US-395|US 395 North|Doyle,Susanville,Alturas
+I-15|Cajon Pass|San Diego,Escondido,Temecula,Lake Elsinore,Corona,Rancho Cucamonga,Hesperia,Victorville,Barstow,Baker
+I-10|Interstate 10|Los Angeles,Pomona,Ontario,Redlands,Banning,Palm Springs,Indio,Desert Center,Blythe
+US-101|US 101|Los Angeles,Thousand Oaks,Ventura,Santa Barbara,Santa Maria,San Luis Obispo,Paso Robles,King City,Salinas,Gilroy,San Jose,San Francisco,Santa Rosa,Ukiah,Willits,Garberville,Eureka,Crescent City
+CA-99|Central Valley|Sacramento,Lodi,Stockton,Modesto,Merced,Fresno,Tulare,Delano,Bakersfield
+CA-58|Tehachapi Pass|Bakersfield,Tehachapi,Mojave,Boron,Barstow
+I-40|Interstate 40|Barstow,Ludlow,Needles
+CA-299|CA 299|Eureka,Willow Creek,Weaverville,Redding,Burney,Alturas
+CA-36|CA 36|Red Bluff,Chester,Susanville
+I-8|Interstate 8|San Diego,Alpine,Pine Valley,El Centro
+CA-14|Antelope Valley|Santa Clarita,Palmdale,Lancaster,Mojave
+US-97|US 97|Weed,Dorris
+
+@NV|Nevada|ਨੇਵਾਡਾ|https://www.nvroads.com
+I-80|Interstate 80|Reno,Sparks,Fernley,Lovelock,Winnemucca,Battle Mountain,Elko,Wells,West Wendover
+US-95|US 95|Las Vegas,Indian Springs,Beatty,Goldfield,Tonopah,Hawthorne,Fallon
+US-95|US 95 North|Winnemucca,McDermitt
+I-15|Interstate 15|Primm,Las Vegas,Moapa,Mesquite
+US-93|US 93|Las Vegas,Alamo,Caliente,Pioche,Ely,Wells,Jackpot
+US-93|US 93 South|Las Vegas,Boulder City
+US-50|Loneliest Road|Stateline,Carson City,Dayton,Fallon,Austin,Eureka,Ely
+US-395|US 395|Reno,Carson City,Minden,Gardnerville
+
+@ID|Idaho|ਆਇਡਾਹੋ|https://511.idaho.gov
+I-90|Fourth of July / Lookout Pass|Post Falls,Coeur d'Alene,Kellogg,Wallace,Mullan
+US-95|US 95|Eastport,Bonners Ferry,Sandpoint,Coeur d'Alene,Moscow,Lewiston,Grangeville,Riggins,New Meadows,Council,Weiser,Payette
+I-84|Interstate 84|Fruitland,Caldwell,Nampa,Boise,Mountain Home,Glenns Ferry,Bliss,Jerome,Burley
+I-86|Interstate 86|Burley,American Falls,Pocatello
+I-15|Interstate 15|Malad City,McCammon,Pocatello,Blackfoot,Idaho Falls,Dubois
+US-20|US 20|Idaho Falls,Rexburg,Ashton,Island Park
+US-93|US 93|Twin Falls,Shoshone,Arco,Mackay,Challis,Salmon,North Fork
+ID-55|Payette River|Boise,Horseshoe Bend,Cascade,McCall,New Meadows
+US-12|Lolo Pass|Lewiston,Orofino,Kamiah,Kooskia
+ID-75|Sun Valley|Shoshone,Bellevue,Hailey,Ketchum,Stanley
+US-2|US 2|Bonners Ferry,Moyie Springs
+
+@MT|Montana|ਮੋਂਟਾਨਾ|https://www.511mt.net
+I-90|Interstate 90|St. Regis,Superior,Missoula,Drummond,Deer Lodge,Butte,Whitehall,Three Forks,Belgrade,Bozeman,Livingston,Big Timber,Columbus,Laurel,Billings,Hardin,Lodge Grass
+I-94|Interstate 94|Billings,Forsyth,Miles City,Glendive,Wibaux
+I-15|Interstate 15|Lima,Dillon,Butte,Boulder,Helena,Wolf Creek,Great Falls,Conrad,Shelby,Sweet Grass
+US-2|Hi-Line|Troy,Libby,Kalispell,Columbia Falls,West Glacier,East Glacier Park Village,Browning,Cut Bank,Shelby,Chester,Havre,Chinook,Harlem,Malta,Glasgow,Wolf Point,Poplar,Culbertson,Bainville
+US-93|US 93|Darby,Hamilton,Lolo,Missoula,Polson,Kalispell,Whitefish,Eureka
+US-12|MacDonald Pass|Garrison,Avon,Helena,Townsend,White Sulphur Springs,Harlowton,Roundup,Forsyth
+US-12|Lolo Pass|Lolo,Missoula
+US-191|Gallatin Canyon|Bozeman,Big Sky,West Yellowstone
+US-89|Paradise Valley|Livingston,Emigrant,Gardiner
+US-87|US 87|Billings,Roundup,Grass Range,Lewistown,Stanford,Great Falls,Fort Benton,Big Sandy,Havre
+
+@WY|Wyoming|ਵਾਇਓਮਿੰਗ|https://www.wyoroad.info
+I-80|Interstate 80|Evanston,Lyman,Little America,Green River,Rock Springs,Wamsutter,Rawlins,Elk Mountain,Arlington@41.594/-106.208,Laramie,Cheyenne,Pine Bluffs
+I-25|Interstate 25|Cheyenne,Chugwater,Wheatland,Douglas,Glenrock,Casper,Kaycee,Buffalo
+I-90|Interstate 90|Ranchester,Sheridan,Buffalo,Gillette,Moorcroft,Sundance,Beulah
+US-287|US 287|Rawlins,Jeffrey City,Lander
+US-191|US 191|Rock Springs,Farson,Pinedale,Bondurant,Jackson
+US-26|Togwotee Pass|Casper,Shoshoni,Riverton,Dubois,Moran,Jackson
+US-14|Bighorn Mountains|Cody,Greybull,Shell,Dayton,Ranchester
+US-20|Wind River Canyon|Shoshoni,Thermopolis,Worland,Basin,Greybull,Cody
+US-16|Powder River Pass|Worland,Ten Sleep,Buffalo
+US-89|US 89|Jackson,Alpine,Afton
+
+@UT|Utah|ਯੂਟਾ|https://udottraffic.utah.gov
+I-15|Interstate 15|St. George,Cedar City,Beaver,Cove Fort,Fillmore,Scipio,Nephi,Santaquin,Provo,Lehi,Salt Lake City,Layton,Ogden,Brigham City,Tremonton,Plymouth
+I-80|Interstate 80|Wendover,Grantsville,Salt Lake City,Park City,Coalville
+I-84|Interstate 84|Snowville,Tremonton,Ogden,Morgan,Henefer
+I-70|Interstate 70|Cove Fort,Richfield,Salina,Green River
+US-6|Soldier Summit|Spanish Fork,Helper,Price,Wellington,Green River
+US-40|US 40|Park City,Heber City,Duchesne,Roosevelt,Vernal,Jensen
+US-191|US 191|Green River,Moab,Monticello,Blanding,Bluff
+US-89|US 89|Kanab,Orderville,Panguitch
+US-91|Logan|Brigham City,Logan
+
+@CO|Colorado|ਕੋਲੋਰਾਡੋ|https://www.cotrip.org
+I-70|Interstate 70|Fruita,Grand Junction,Parachute,Rifle,Glenwood Springs,Gypsum,Eagle,Avon,Vail,Frisco,Silverthorne,Georgetown,Idaho Springs,Denver,Aurora,Bennett,Limon,Stratton,Burlington
+I-25|Interstate 25|Trinidad,Walsenburg,Pueblo,Colorado Springs,Monument,Castle Rock,Denver,Broomfield,Loveland,Fort Collins,Wellington
+I-76|Interstate 76|Denver,Fort Morgan,Brush,Sterling,Julesburg
+US-285|US 285|Denver,Conifer,Bailey,Fairplay,Buena Vista,Poncha Springs,Saguache,Alamosa,Antonito
+US-160|Wolf Creek Pass|Cortez,Mancos,Durango,Bayfield,Pagosa Springs,South Fork,Del Norte,Monte Vista,Alamosa,Fort Garland,Walsenburg
+US-550|Red Mountain Pass|Montrose,Ridgway,Ouray,Silverton,Durango
+US-50|Monarch Pass|Grand Junction,Delta,Montrose,Gunnison,Salida,Canon City,Pueblo
+US-40|Berthoud / Rabbit Ears|Dinosaur,Craig,Hayden,Steamboat Springs,Kremmling,Granby,Fraser,Winter Park,Empire
+CO-82|Aspen|Glenwood Springs,Carbondale,Basalt,Aspen
+US-24|Tennessee Pass|Colorado Springs,Woodland Park,Divide,Buena Vista,Leadville,Minturn
+CO-9|Hoosier Pass|Fairplay,Alma,Breckenridge,Frisco
+
+@NM|New Mexico|ਨਿਊ ਮੈਕਸੀਕੋ|https://nmroads.com
+I-25|Interstate 25|Las Cruces,Truth or Consequences,Socorro,Belen,Los Lunas,Albuquerque,Bernalillo,Santa Fe,Las Vegas,Wagon Mound,Springer,Raton
+I-40|Interstate 40|Gallup,Thoreau,Grants,Albuquerque,Moriarty,Clines Corners@35.006/-105.667,Santa Rosa,Tucumcari,San Jon
+I-10|Interstate 10|Lordsburg,Deming,Las Cruces,Anthony
+US-550|US 550|Bernalillo,Cuba,Bloomfield,Aztec
+US-285|US 285 North|Santa Fe,Espanola,Ojo Caliente,Tres Piedras
+US-285|US 285 South|Clines Corners@35.006/-105.667,Vaughn,Roswell,Artesia,Carlsbad
+US-70|US 70|Las Cruces,Alamogordo,Tularosa,Mescalero,Ruidoso Downs,Roswell
+US-64|Taos - Raton|Taos,Eagle Nest,Cimarron,Raton
+NM-68|Rio Grande Gorge|Espanola,Taos
+
+@AZ|Arizona|ਐਰੀਜ਼ੋਨਾ|https://az511.gov
+I-40|Interstate 40|Kingman,Seligman,Ash Fork,Williams,Flagstaff,Winslow,Holbrook,Sanders
+I-17|Interstate 17|Phoenix,Black Canyon City,Camp Verde,Munds Park,Flagstaff
+I-10|Interstate 10|Ehrenberg,Quartzsite,Buckeye,Phoenix,Casa Grande,Tucson,Benson,Willcox,San Simon
+I-8|Interstate 8|Yuma,Gila Bend,Casa Grande
+I-19|Interstate 19|Tucson,Green Valley,Nogales
+US-93|US 93|Kingman,Wikieup,Wickenburg
+US-180|Grand Canyon|Flagstaff,Valle,Tusayan
+US-89|US 89|Flagstaff,Cameron,Page
+AZ-87|Beeline Hwy|Mesa,Payson,Strawberry,Winslow
+AZ-260|Mogollon Rim|Payson,Heber,Show Low
+US-60|Salt River Canyon|Mesa,Superior,Globe,Show Low,Springerville
+
+@TX|Texas|ਟੈਕਸਸ|https://drivetexas.org
+I-40|Interstate 40|Vega,Amarillo,Groom,McLean,Shamrock
+I-27|Interstate 27|Amarillo,Canyon,Tulia,Plainview,Lubbock
+US-287|US 287|Amarillo,Clarendon,Childress,Vernon,Wichita Falls,Bowie,Decatur,Fort Worth
+US-287|US 287 North|Amarillo,Dumas,Stratford
+I-35|Interstate 35|Laredo,San Antonio,New Braunfels,San Marcos,Austin,Georgetown,Temple,Waco,Hillsboro,Dallas,Denton,Gainesville
+I-20|Interstate 20|Pecos,Monahans,Odessa,Midland,Big Spring,Colorado City,Sweetwater,Abilene,Cisco,Eastland,Weatherford,Fort Worth,Dallas,Terrell,Canton,Tyler,Longview,Marshall
+I-10|Interstate 10|El Paso,Van Horn,Fort Stockton,Ozona,Sonora,Junction,Kerrville,San Antonio,Seguin,Columbus,Houston,Beaumont,Orange
+I-45|Interstate 45|Dallas,Ennis,Corsicana,Fairfield,Huntsville,Conroe,Houston,Galveston
+I-30|Interstate 30|Dallas,Greenville,Sulphur Springs,Mount Pleasant,Texarkana
+I-37|Interstate 37|San Antonio,Pleasanton,George West,Corpus Christi
+US-59|US 59|Houston,Cleveland,Livingston,Lufkin,Nacogdoches,Carthage
+
+@OK|Oklahoma|ਓਕਲਾਹੋਮਾ|https://oktraffic.org
+I-40|Interstate 40|Erick,Sayre,Elk City,Clinton,Weatherford,El Reno,Oklahoma City,Shawnee,Okemah,Henryetta,Checotah,Sallisaw
+I-35|Interstate 35|Thackerville,Ardmore,Pauls Valley,Purcell,Norman,Oklahoma City,Edmond,Guthrie,Perry,Tonkawa,Blackwell
+I-44|Interstate 44|Lawton,Chickasha,Oklahoma City,Chandler,Stroud,Sapulpa,Tulsa,Claremore,Vinita,Miami
+US-412|US 412|Boise City,Guymon,Beaver,Woodward,Enid,Tulsa
+US-69|US 69|Durant,Atoka,McAlester,Muskogee
+
+@KS|Kansas|ਕੈਨਸਸ|https://www.kandrive.gov
+I-70|Interstate 70|Goodland,Colby,Oakley,WaKeeney,Hays,Russell,Salina,Abilene,Junction City,Manhattan,Topeka,Lawrence,Kansas City
+I-35|Interstate 35|Wellington,Wichita,El Dorado,Emporia,Ottawa,Olathe,Kansas City
+I-135|Interstate 135|Wichita,Newton,McPherson,Salina
+US-83|US 83|Liberal,Garden City,Scott City,Oakley
+US-50|US 50|Syracuse,Garden City,Dodge City,Kinsley,Hutchinson,Newton,Emporia
+US-54|US 54|Liberal,Pratt,Kingman,Wichita
+US-36|US 36|St. Francis,Atwood,Norton,Phillipsburg,Smith Center,Mankato,Belleville,Marysville
+
+@NE|Nebraska|ਨੇਬਰਾਸਕਾ|https://511.nebraska.gov
+I-80|Interstate 80|Kimball,Sidney,Ogallala,North Platte,Gothenburg,Cozad,Lexington,Kearney,Grand Island,York,Lincoln,Omaha
+US-20|US 20|Chadron,Gordon,Valentine,Ainsworth,Bassett,O'Neill
+US-26|US 26|Scottsbluff,Bridgeport,Ogallala
+US-385|US 385|Sidney,Bridgeport,Alliance,Chadron
+US-83|US 83|North Platte,Thedford,Valentine
+
+@SD|South Dakota|ਸਾਊਥ ਡਕੋਟਾ|https://sd511.org
+I-90|Interstate 90|Spearfish,Sturgis,Rapid City,Wall,Kadoka,Murdo,Vivian,Presho,Chamberlain,Mitchell,Sioux Falls
+I-29|Interstate 29|North Sioux City,Elk Point,Sioux Falls,Brookings,Watertown,Summit,Sisseton
+US-212|US 212|Belle Fourche,Newell,Faith,Eagle Butte,Gettysburg,Faulkton,Redfield,Watertown
+US-14|US 14|Pierre,Highmore,Huron,De Smet,Brookings
+US-83|US 83|Pierre,Vivian
+US-385|Black Hills|Deadwood,Hill City,Custer,Hot Springs
+US-12|US 12|Lemmon,Mobridge,Aberdeen,Webster,Milbank
+
+@ND|North Dakota|ਨੌਰਥ ਡਕੋਟਾ|https://travel.dot.nd.gov
+I-94|Interstate 94|Beach,Medora,Belfield,Dickinson,Richardton,Glen Ullin,Mandan,Bismarck,Steele,Jamestown,Valley City,Casselton,Fargo
+I-29|Interstate 29|Wahpeton,Fargo,Hillsboro,Grand Forks,Grafton,Drayton,Pembina
+US-2|US 2|Williston,Stanley,Minot,Rugby,Devils Lake,Lakota,Grand Forks
+US-52|US 52|Minot,Kenmare,Portal
+US-83|US 83|Bismarck,Washburn,Minot
+US-85|US 85|Belfield,Watford City,Williston
+
+@MN|Minnesota|ਮਿਨੇਸੋਟਾ|https://511mn.org
+I-94|Interstate 94|Moorhead,Fergus Falls,Alexandria,Sauk Centre,Saint Cloud,Monticello,Minneapolis,Saint Paul
+I-35|Interstate 35|Albert Lea,Owatonna,Faribault,Lakeville,Minneapolis,Forest Lake,Hinckley,Moose Lake,Cloquet,Duluth
+I-90|Interstate 90|Luverne,Worthington,Jackson,Fairmont,Blue Earth,Albert Lea,Austin,Saint Charles,La Crescent
+US-2|US 2|East Grand Forks,Crookston,Bemidji,Cass Lake,Grand Rapids,Duluth
+US-10|US 10|Moorhead,Detroit Lakes,Wadena,Staples,Little Falls,Saint Cloud,Elk River,Anoka
+US-52|US 52|Rochester,Cannon Falls,Saint Paul
+US-14|US 14|Winona,Rochester,Owatonna,Waseca,Mankato
+US-169|US 169|Mankato,Saint Peter,Shakopee
+US-53|US 53|Duluth,Virginia,Cook,Orr,International Falls
+MN-61|North Shore|Duluth,Two Harbors,Silver Bay,Grand Marais,Grand Portage
+
+@WI|Wisconsin|ਵਿਸਕੌਨਸਿਨ|https://511wi.gov
+I-94|Interstate 94|Hudson,Menomonie,Eau Claire,Black River Falls,Tomah,Mauston,Wisconsin Dells,Portage,Madison,Johnson Creek,Waukesha,Milwaukee,Kenosha
+I-90|Interstate 90|La Crosse,Sparta,Tomah
+I-90|Madison - Beloit|Madison,Janesville,Beloit
+I-39|I-39 / US 51|Portage,Stevens Point,Wausau,Merrill,Tomahawk,Minocqua
+I-43|Interstate 43|Milwaukee,Sheboygan,Manitowoc,Green Bay
+I-41|Interstate 41|Milwaukee,Fond du Lac,Oshkosh,Appleton,Green Bay
+US-53|US 53|Eau Claire,Chippewa Falls,Rice Lake,Spooner,Superior
+US-2|US 2|Superior,Ashland,Hurley
+US-8|US 8|St. Croix Falls,Ladysmith,Tomahawk,Rhinelander
+
+@MI|Michigan|ਮਿਸ਼ੀਗਨ|https://mdotjboss.state.mi.us/MiDrive/map
+I-94|Interstate 94|New Buffalo,Benton Harbor,Kalamazoo,Battle Creek,Marshall,Jackson,Ann Arbor,Detroit,Port Huron
+I-96|Interstate 96|Muskegon,Grand Rapids,Lansing,Brighton,Detroit
+I-75|Interstate 75|Monroe,Detroit,Flint,Saginaw,Bay City,West Branch,Grayling,Gaylord,Indian River,Mackinaw City,St. Ignace,Sault Ste. Marie
+I-69|Interstate 69|Coldwater,Marshall,Lansing,Flint,Port Huron
+US-131|US 131|Kalamazoo,Grand Rapids,Big Rapids,Cadillac,Kalkaska,Petoskey
+US-2|US 2|Ironwood,Wakefield,Watersmeet,Iron River,Crystal Falls,Iron Mountain,Escanaba,Manistique,Naubinway,St. Ignace
+US-41|US 41|Menominee,Escanaba,Marquette,L'Anse,Houghton,Calumet,Copper Harbor
+US-127|US 127|Jackson,Lansing,Mount Pleasant,Clare,Grayling
+US-10|US 10|Ludington,Reed City,Clare,Midland,Bay City
+MI-28|M-28|Marquette,Munising,Seney,Sault Ste. Marie
+
+@IA|Iowa|ਆਇਓਵਾ|https://511ia.org
+I-80|Interstate 80|Council Bluffs,Avoca,Atlantic,Adair,Des Moines,Newton,Grinnell,Iowa City,Davenport
+I-35|Interstate 35|Lamoni,Osceola,Des Moines,Ames,Clear Lake,Northwood
+I-29|Interstate 29|Hamburg,Council Bluffs,Missouri Valley,Onawa,Sioux City
+I-380|Interstate 380|Iowa City,Cedar Rapids,Waterloo
+US-20|US 20|Sioux City,Early,Fort Dodge,Webster City,Iowa Falls,Waterloo,Manchester,Dubuque
+US-30|US 30|Missouri Valley,Denison,Carroll,Boone,Ames,Marshalltown,Cedar Rapids,Clinton
+
+@MO|Missouri|ਮਿਜ਼ੂਰੀ|https://traveler.modot.org
+I-70|Interstate 70|Kansas City,Blue Springs,Concordia,Boonville,Columbia,Kingdom City,Wentzville,Saint Charles,Saint Louis
+I-44|Interstate 44|Saint Louis,Sullivan,Rolla,Lebanon,Springfield,Mount Vernon,Joplin
+I-35|Interstate 35|Kansas City,Cameron,Bethany,Eagleville
+I-29|Interstate 29|Kansas City,Saint Joseph,Mound City,Rock Port
+I-55|Interstate 55|Saint Louis,Festus,Perryville,Cape Girardeau,Sikeston,Hayti
+US-65|US 65|Springfield,Branson
+US-36|US 36|Saint Joseph,Cameron,Chillicothe,Macon,Hannibal
+US-54|US 54|Jefferson City,Fulton,Kingdom City
+US-63|US 63|Columbia,Jefferson City,Rolla
+
+@AR|Arkansas|ਆਰਕਨਸੌ|https://www.idrivearkansas.com
+I-40|Interstate 40|Fort Smith,Alma,Clarksville,Russellville,Conway,North Little Rock,Forrest City,West Memphis
+I-30|Interstate 30|Texarkana,Hope,Arkadelphia,Benton,Little Rock
+I-49|Interstate 49|Alma,Fayetteville,Springdale,Rogers,Bentonville
+I-55|Interstate 55|West Memphis,Marion,Blytheville
+US-65|US 65|Harrison,Clinton,Conway
+US-67|US 67|North Little Rock,Searcy,Newport,Walnut Ridge
+
+@LA|Louisiana|ਲੂਈਜ਼ੀਆਨਾ|https://www.511la.org
+I-10|Interstate 10|Vinton,Lake Charles,Jennings,Lafayette,Baton Rouge,LaPlace,New Orleans,Slidell
+I-20|Interstate 20|Shreveport,Minden,Ruston,Monroe,Tallulah
+I-49|Interstate 49|Shreveport,Natchitoches,Alexandria,Opelousas,Lafayette
+I-55|Interstate 55|Hammond,Amite City,Kentwood
+I-12|Interstate 12|Baton Rouge,Hammond,Covington,Slidell
+
+@MS|Mississippi|ਮਿਸੀਸਿੱਪੀ|https://www.mdottraffic.com
+I-20|Interstate 20|Vicksburg,Jackson,Forest,Meridian
+I-55|Interstate 55|McComb,Brookhaven,Jackson,Canton,Grenada,Batesville,Southaven
+I-59|Interstate 59|Meridian,Laurel,Hattiesburg,Picayune
+I-10|Interstate 10|Moss Point,Biloxi,Gulfport,Waveland
+I-22|Interstate 22|Holly Springs,New Albany,Tupelo,Fulton
+
+@AL|Alabama|ਅਲਾਬਾਮਾ|https://algotraffic.com
+I-65|Interstate 65|Ardmore,Athens,Decatur,Cullman,Birmingham,Clanton,Montgomery,Greenville,Evergreen,Mobile
+I-20|Interstate 20|Livingston,Tuscaloosa,Bessemer,Birmingham,Pell City,Anniston,Heflin
+I-59|Interstate 59|Birmingham,Gadsden,Fort Payne
+I-85|Interstate 85|Montgomery,Tuskegee,Auburn,Opelika
+I-10|Interstate 10|Mobile,Loxley
+I-22|Interstate 22|Hamilton,Jasper,Birmingham
+
+@GA|Georgia|ਜਾਰਜੀਆ|https://511ga.org
+I-75|Interstate 75|Ringgold,Dalton,Calhoun,Cartersville,Marietta,Atlanta,McDonough,Macon,Cordele,Tifton,Valdosta
+I-85|Interstate 85|LaGrange,Newnan,Atlanta,Commerce,Lavonia
+I-20|Interstate 20|Tallapoosa,Douglasville,Atlanta,Conyers,Covington,Madison,Thomson,Augusta
+I-16|Interstate 16|Macon,Dublin,Metter,Savannah
+I-95|Interstate 95|Savannah,Brunswick,Kingsland
+US-23|North Georgia mountains|Gainesville,Cornelia,Clayton
+
+@FL|Florida|ਫਲੋਰਿਡਾ|https://fl511.com
+I-95|Interstate 95|Jacksonville,St. Augustine,Daytona Beach,Titusville,Melbourne,Fort Pierce,West Palm Beach,Fort Lauderdale,Miami
+I-75|Interstate 75|Jennings,Lake City,Gainesville,Ocala,Wildwood,Tampa,Sarasota,Port Charlotte,Fort Myers,Naples
+I-10|Interstate 10|Pensacola,Crestview,DeFuniak Springs,Marianna,Tallahassee,Madison,Lake City,Jacksonville
+I-4|Interstate 4|Tampa,Lakeland,Orlando,Daytona Beach
+
+@SC|South Carolina|ਸਾਊਥ ਕੈਰੋਲਾਈਨਾ|https://www.511sc.org
+I-95|Interstate 95|Hardeeville,Walterboro,Santee,Florence,Dillon
+I-26|Interstate 26|Charleston,Summerville,Orangeburg,Columbia,Newberry,Clinton,Spartanburg,Landrum
+I-85|Interstate 85|Anderson,Greenville,Spartanburg,Gaffney
+I-20|Interstate 20|North Augusta,Columbia,Camden,Florence
+I-77|Interstate 77|Columbia,Chester,Rock Hill,Fort Mill
+
+@NC|North Carolina|ਨੌਰਥ ਕੈਰੋਲਾਈਨਾ|https://drivenc.gov
+I-40|Interstate 40|Waynesville,Asheville,Black Mountain,Marion,Morganton,Hickory,Statesville,Winston-Salem,Greensboro,Burlington,Durham,Raleigh,Benson,Wilmington
+I-85|Interstate 85|Kings Mountain,Gastonia,Charlotte,Concord,Salisbury,Lexington,Greensboro,Durham,Oxford,Henderson
+I-95|Interstate 95|Lumberton,Fayetteville,Dunn,Smithfield,Wilson,Rocky Mount,Roanoke Rapids
+I-77|Interstate 77|Charlotte,Mooresville,Statesville,Elkin,Mount Airy
+I-26|Interstate 26|Saluda,Hendersonville,Asheville,Mars Hill
+US-421|US 421|Wilkesboro,Deep Gap@36.222/-81.512,Boone
+US-321|US 321|Hickory,Lenoir,Blowing Rock,Boone
+
+@VA|Virginia|ਵਰਜੀਨੀਆ|https://511.vdot.virginia.gov
+I-81|Interstate 81|Bristol,Abingdon,Marion,Wytheville,Christiansburg,Salem,Roanoke,Lexington,Staunton,Harrisonburg,New Market,Woodstock,Winchester
+I-64|Interstate 64|Covington,Lexington,Staunton,Waynesboro,Charlottesville,Richmond,Williamsburg,Newport News,Norfolk
+I-95|Interstate 95|Emporia,Petersburg,Richmond,Fredericksburg,Stafford,Woodbridge,Alexandria
+I-77|Interstate 77|Hillsville,Wytheville,Bland,Rocky Gap
+I-66|Interstate 66|Strasburg,Front Royal,Haymarket,Fairfax,Arlington
+I-85|Interstate 85|South Hill,Petersburg
+US-29|US 29|Danville,Lynchburg,Charlottesville,Culpeper,Warrenton
+
+@WV|West Virginia|ਵੈਸਟ ਵਰਜੀਨੀਆ|https://wv511.org
+I-64|Interstate 64|White Sulphur Springs,Lewisburg,Beckley,Charleston,Huntington
+I-77|Interstate 77|Princeton,Beckley,Charleston,Ripley,Parkersburg
+I-79|Interstate 79|Charleston,Sutton,Weston,Clarksburg,Fairmont,Morgantown
+I-68|Interstate 68|Morgantown,Bruceton Mills
+I-81|Interstate 81|Inwood,Martinsburg,Falling Waters
+US-219|US 219|Lewisburg,Marlinton,Elkins
+
+@KY|Kentucky|ਕੈਂਟਕੀ|https://goky.ky.gov
+I-64|Interstate 64|Ashland,Grayson,Morehead,Mount Sterling,Winchester,Lexington,Frankfort,Shelbyville,Louisville
+I-75|Interstate 75|Covington,Florence,Williamstown,Georgetown,Lexington,Richmond,Berea,Mount Vernon,London,Corbin,Williamsburg
+I-65|Interstate 65|Louisville,Elizabethtown,Munfordville,Cave City,Bowling Green,Franklin
+I-71|Interstate 71|Louisville,La Grange,Carrollton,Walton
+I-24|Interstate 24|Paducah,Eddyville,Cadiz,Oak Grove
+US-23|US 23|Ashland,Paintsville,Prestonsburg,Pikeville
+
+@TN|Tennessee|ਟੈਨੇਸੀ|https://smartway.tn.gov
+I-40|Interstate 40|Memphis,Brownsville,Jackson,Dickson,Nashville,Lebanon,Cookeville,Crossville,Kingston,Knoxville,Dandridge,Newport
+I-24|Monteagle|Clarksville,Nashville,Murfreesboro,Manchester,Monteagle,Chattanooga
+I-75|Interstate 75|Chattanooga,Cleveland,Athens,Sweetwater,Lenoir City,Knoxville,Caryville,Jellico
+I-65|Interstate 65|Pulaski,Columbia,Spring Hill,Franklin,Nashville,Goodlettsville,White House
+I-81|Interstate 81|Dandridge,Morristown,Bulls Gap,Kingsport,Bristol
+I-26|Interstate 26|Kingsport,Johnson City,Erwin
+US-441|Smoky Mountains|Knoxville,Sevierville,Pigeon Forge,Gatlinburg
+
+@OH|Ohio|ਓਹਾਇਓ|https://www.ohgo.com
+I-70|Interstate 70|Lewisburg,Vandalia,Springfield,Columbus,Zanesville,Cambridge,Saint Clairsville
+I-71|Interstate 71|Cincinnati,Lebanon,Wilmington,Columbus,Mansfield,Medina,Cleveland
+I-75|Interstate 75|Cincinnati,Middletown,Dayton,Piqua,Sidney,Lima,Findlay,Bowling Green,Toledo
+I-90|Interstate 90|Toledo,Fremont,Elyria,Cleveland,Painesville,Ashtabula,Conneaut
+I-80|Ohio Turnpike|Elyria,Streetsboro,Youngstown,Hubbard
+I-77|Interstate 77|Marietta,Caldwell,Cambridge,New Philadelphia,Canton,Akron,Cleveland
+US-33|US 33|Columbus,Lancaster,Logan,Athens
+
+@IN|Indiana|ਇੰਡੀਆਨਾ|https://511in.org
+I-65|Interstate 65|Gary,Merrillville,Rensselaer,Lafayette,Lebanon,Indianapolis,Franklin,Columbus,Seymour,Scottsburg,Jeffersonville
+I-70|Interstate 70|Terre Haute,Brazil,Indianapolis,Greenfield,Richmond
+I-69|Interstate 69|Evansville,Washington,Bloomington,Martinsville,Indianapolis,Anderson,Marion,Fort Wayne,Auburn,Angola
+I-74|Interstate 74|Covington,Crawfordsville,Indianapolis,Shelbyville,Batesville
+I-90|Indiana Toll Road|Hammond,Gary,Portage,South Bend,Mishawaka,Elkhart,Angola
+I-94|Interstate 94|Gary,Chesterton,Michigan City
+I-64|Interstate 64|Evansville,Ferdinand,Corydon,New Albany
+
+@IL|Illinois|ਇਲੀਨੋਇ|https://www.gettingaroundillinois.com
+I-80|Interstate 80|Moline,Geneseo,LaSalle,Ottawa,Morris,Joliet
+I-55|Interstate 55|Chicago,Joliet,Bloomington,Lincoln,Springfield,Litchfield,East Saint Louis
+I-57|Interstate 57|Chicago,Kankakee,Champaign,Effingham,Mount Vernon,Marion,Cairo
+I-70|Interstate 70|Collinsville,Highland,Vandalia,Effingham,Marshall
+I-74|Interstate 74|Moline,Galesburg,Peoria,Bloomington,Champaign,Danville
+I-39|Interstate 39|Rockford,Rochelle,LaSalle,Bloomington
+I-90|Interstate 90|Rockford,Elgin,Chicago
+I-94|Interstate 94|Chicago,Waukegan
+I-72|Interstate 72|Springfield,Decatur,Champaign
+
+@PA|Pennsylvania|ਪੈਨਸਿਲਵੇਨੀਆ|https://www.511pa.com
+I-80|Interstate 80|Sharon,Mercer,Clarion,DuBois,Clearfield,Snow Shoe,Milesburg,Milton,Bloomsburg,Hazleton,White Haven,Stroudsburg
+I-76|PA Turnpike|Pittsburgh,Monroeville,Somerset,Bedford,Breezewood,Carlisle,Harrisburg,Lancaster,King of Prussia,Philadelphia
+I-81|Interstate 81|Greencastle,Chambersburg,Carlisle,Harrisburg,Pine Grove,Hazleton,Wilkes-Barre,Scranton,Great Bend
+I-79|Interstate 79|Waynesburg,Washington,Pittsburgh,Grove City,Meadville,Erie
+I-90|Interstate 90|Erie,North East
+I-70|Interstate 70|Washington,Bentleyville,New Stanton
+I-99|Interstate 99|Bedford,Altoona,Tyrone,State College,Bellefonte
+US-6|Northern Tier|Warren,Kane,Coudersport,Wellsboro,Mansfield,Towanda
+I-78|Interstate 78|Harrisburg,Allentown,Easton
+I-476|NE Extension|King of Prussia,Quakertown,Allentown,Jim Thorpe,Wilkes-Barre,Scranton
+I-95|Interstate 95|Chester,Philadelphia
+
+@NY|New York|ਨਿਊ ਯੌਰਕ|https://511ny.org
+I-90|NYS Thruway|Ripley,Westfield,Dunkirk,Hamburg,Buffalo,Batavia,Rochester,Waterloo,Syracuse,Utica,Herkimer,Amsterdam,Schenectady,Albany
+I-87|Northway / Thruway|New York,Yonkers,Suffern,Newburgh,New Paltz,Kingston,Catskill,Albany,Saratoga Springs,Glens Falls,Lake George,Schroon Lake,Keeseville,Plattsburgh,Champlain
+I-81|Interstate 81|Binghamton,Cortland,Syracuse,Watertown,Alexandria Bay
+I-88|Interstate 88|Binghamton,Oneonta,Cobleskill,Schenectady
+I-86|Southern Tier|Jamestown,Olean,Hornell,Corning,Elmira,Owego,Binghamton
+I-390|Interstate 390|Rochester,Dansville,Bath
+I-84|Interstate 84|Port Jervis,Middletown,Newburgh,Brewster
+NY-3|Adirondacks|Watertown,Carthage,Tupper Lake,Saranac Lake,Plattsburgh
+
+@NJ|New Jersey|ਨਿਊ ਜਰਸੀ|https://511nj.org
+I-95|NJ Turnpike|Fort Lee,Newark,Edison,East Brunswick,Hightstown,Cherry Hill,Pennsville
+I-80|Interstate 80|Columbia,Hackettstown,Netcong,Parsippany,Paterson,Hackensack,Fort Lee
+I-78|Interstate 78|Phillipsburg,Clinton,Somerville,Newark
+I-287|Interstate 287|Mahwah,Morristown,Somerville,Edison
+
+@CT|Connecticut|ਕਨੈਟੀਕਟ|https://ctroads.org
+I-95|Interstate 95|Greenwich,Stamford,Norwalk,Bridgeport,New Haven,Old Saybrook,New London,Groton
+I-84|Interstate 84|Danbury,Waterbury,Hartford,Vernon,Tolland
+I-91|Interstate 91|New Haven,Meriden,Hartford,Enfield
+I-395|Interstate 395|New London,Norwich,Putnam
+
+@RI|Rhode Island|ਰੋਡ ਆਈਲੈਂਡ|https://www.dot.ri.gov/travel/
+I-95|Interstate 95|Westerly,Warwick,Providence,Pawtucket
+
+@MA|Massachusetts|ਮੈਸਾਚੂਸੈਟਸ|https://mass511.com
+I-90|Mass Pike|West Stockbridge,Lee,Westfield,Springfield,Sturbridge,Worcester,Framingham,Boston
+I-95|Interstate 95|Attleboro,Foxborough,Norwood,Waltham,Burlington,Peabody,Newburyport
+I-91|Interstate 91|Springfield,Holyoke,Northampton,Greenfield
+I-93|Interstate 93|Boston,Andover,Methuen
+MA-2|Mohawk Trail|Greenfield,North Adams,Williamstown
+
+@NH|New Hampshire|ਨਿਊ ਹੈਂਪਸ਼ਰ|https://newengland511.org
+I-93|Interstate 93|Salem,Manchester,Concord,Tilton,Plymouth,Lincoln,Franconia,Littleton
+I-95|Interstate 95|Seabrook,Portsmouth
+I-89|Interstate 89|Concord,New London,Lebanon
+NH-16|White Mountains|Rochester,Ossipee,Conway,Jackson,Gorham,Berlin
+NH-101|NH 101|Keene,Peterborough,Milford,Manchester,Exeter,Hampton
+
+@VT|Vermont|ਵਰਮੋਂਟ|https://newengland511.org
+I-89|Interstate 89|White River Junction,Sharon,Randolph,Montpelier,Waterbury,Burlington,Saint Albans,Swanton
+I-91|Interstate 91|Brattleboro,Bellows Falls,White River Junction,Bradford,Saint Johnsbury,Lyndonville,Newport,Derby Line
+US-7|US 7|Bennington,Manchester,Rutland,Middlebury,Burlington
+VT-9|Molly Stark Trail|Bennington,Wilmington,Brattleboro
+US-4|Killington|Rutland,Killington,Woodstock,White River Junction
+
+@ME|Maine|ਮੇਨ|https://newengland511.org
+I-95|Interstate 95|Kittery,York,Portland,Augusta,Waterville,Newport,Bangor,Lincoln,Medway,Houlton
+US-1|Coastal US 1|Brunswick,Bath,Rockland,Belfast,Ellsworth,Machias,Calais
+US-2|US 2|Bethel,Rumford,Farmington,Skowhegan,Newport
+US-201|US 201|Skowhegan,Bingham,Jackman
+US-1|Aroostook|Houlton,Presque Isle,Caribou,Van Buren,Fort Kent
+
+@MD|Maryland|ਮੈਰੀਲੈਂਡ|https://md511.maryland.gov
+I-95|Interstate 95|College Park,Laurel,Baltimore,Aberdeen,Elkton
+I-70|Interstate 70|Hancock,Hagerstown,Frederick,Mount Airy,Baltimore
+I-68|Interstate 68|Grantsville,Frostburg,Cumberland,Hancock
+I-81|Interstate 81|Williamsport,Hagerstown
+US-50|US 50|Washington@38.895/-77.036,Annapolis,Easton,Cambridge,Salisbury,Ocean City
+I-270|Interstate 270|Frederick,Gaithersburg,Bethesda
+
+@DE|Delaware|ਡੇਲਾਵੇਅਰ|https://deldot.gov/map/
+I-95|Interstate 95|Newark,Wilmington,Claymont
+US-13|US 13|Wilmington,Middletown,Smyrna,Dover,Harrington,Seaford,Delmar
