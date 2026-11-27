@@ -30,7 +30,7 @@ US_IBI = {  # state: (host, conditions list or None, label)
     "WI": ("https://511wi.gov", "WinterRoads", "511 Wisconsin"),
 }
 CRC = {"IA": "https://511ia.org", "IN": "https://511in.org", "KS": "https://www.kandrive.gov", "MA": "https://mass511.com", "NE": "https://511.nebraska.gov"}
-STATES = set("AK AL AR AZ CA CO CT DE FL GA IA ID IL IN KS KY LA MA MD ME MI MN MO MS MT NC ND NE NH NJ NM NV NY OH OK OR PA RI SC SD TN TX UT VA VT WA WI WV WY".split())
+STATES = set("AK AL AR AZ CA CO CT DE FL GA HI IA ID IL IN KS KY LA MA MD ME MI MN MO MS MT NC ND NE NH NJ NM NV NY OH OK OR PA RI SC SD TN TX UT VA VT WA WI WV WY".split())
 AK_NAMES = {"sterling": "AK-1", "glenn": "AK-1", "tok cutoff": "AK-1", "seward": "AK-9", "parks": "AK-3", "richardson": "AK-4",
             "alaska highway": "AK-2", "alaska hwy": "AK-2", "elliott": "AK-2", "dalton": "AK-11"}
 
