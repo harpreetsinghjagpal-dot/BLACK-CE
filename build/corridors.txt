@@ -473,8 +473,8 @@ HI-56|Kauai north|Lihue,Kapaa,Princeville
 # ---------------- Mexico (all 32 states). Federal highways: MEX-n ----------------
 @BCN|Baja California|ਬਾਖਾ ਕੈਲੀਫ਼ੋਰਨੀਆ|https://www.gob.mx/guardianacional
 MEX-2|La Rumorosa|Tijuana,Tecate,La Rumorosa,Mexicali
-MEX-1|Transpeninsular|Tijuana,Rosarito,Ensenada,San Quintin,El Rosario
-MEX-3|Sierra de Juarez|Tecate,Ensenada,Ojos Negros,Valle de la Trinidad,San Felipe
+MEX-1|Transpeninsular|Tijuana,Rosarito,Ensenada,San Quintin,El Rosario@30.06/-115.73
+MEX-3|Sierra de Juarez|Tecate,Ensenada,Ojos Negros@31.91/-116.27,Valle de la Trinidad,San Felipe
 MEX-5|Mexicali - San Felipe|Mexicali,San Felipe
 @BCS|Baja California Sur|ਬਾਖਾ ਕੈਲੀਫ਼ੋਰਨੀਆ ਸੁਰ|https://www.gob.mx/guardianacional
 MEX-1|Transpeninsular|Guerrero Negro,San Ignacio,Santa Rosalia,Mulege,Loreto,Ciudad Constitucion,La Paz,San Jose del Cabo,Cabo San Lucas
@@ -485,8 +485,8 @@ MEX-16|Hermosillo - Yecora|Hermosillo,Tecoripa,Yecora
 @CHH|Chihuahua|ਚਿਹੂਆਹੂਆ|https://www.gob.mx/guardianacional
 MEX-2|Janos - Juarez|Janos,Ascension,Ciudad Juarez
 MEX-10|Nuevo Casas Grandes|Nuevo Casas Grandes,Janos
-MEX-45|Panamericana|Ciudad Juarez,Villa Ahumada,Chihuahua,Delicias,Camargo,Jimenez,Hidalgo del Parral
-MEX-16|Chihuahua - Basaseachi|Ojinaga,Aldama,Chihuahua,Cuauhtemoc,La Junta,Basaseachi
+MEX-45|Panamericana|Ciudad Juarez,Villa Ahumada@30.62/-106.51,Chihuahua@28.635/-106.089,Delicias,Camargo@27.67/-105.17,Jimenez@27.13/-104.92,Hidalgo del Parral
+MEX-16|Chihuahua - Basaseachi|Ojinaga,Aldama@28.839/-105.911,Chihuahua@28.635/-106.089,Cuauhtemoc,La Junta,Basaseachi
 @SIN|Sinaloa|ਸਿਨਾਲੋਆ|https://www.gob.mx/guardianacional
 MEX-15|Carretera Federal 15|Los Mochis,Guasave,Guamuchil,Culiacan,Mazatlan,Escuinapa
 MEX-40|Mazatlan - Durango|Mazatlan,Concordia
@@ -501,9 +501,9 @@ MEX-85|Carretera Federal 85|Sabinas Hidalgo,Monterrey,Montemorelos,Linares
 MEX-40|Saltillo - Monterrey|Santa Catarina,Monterrey,Cadereyta Jimenez
 NLE-58|Sierra Madre|Linares,Iturbide,Galeana
 @TAM|Tamaulipas|ਤਾਮਾਉਲੀਪਾਸ|https://www.gob.mx/guardianacional
-MEX-2|Frontera|Nuevo Laredo,Reynosa,Matamoros
-MEX-85|Carretera Federal 85|Nuevo Laredo,Ciudad Victoria,Ciudad Mante
-MEX-180|Golfo|Matamoros,San Fernando,Soto la Marina,Aldama,Tampico
+MEX-2|Frontera|Nuevo Laredo,Reynosa,Matamoros@25.87/-97.50
+MEX-85|Carretera Federal 85|Ciudad Victoria,Ciudad Mante
+MEX-180|Golfo|Matamoros@25.87/-97.50,San Fernando,Soto la Marina,Aldama,Tampico
 @ZAC|Zacatecas|ਜ਼ਾਕਾਤੇਕਸ|https://www.gob.mx/guardianacional
 MEX-45|Panamericana|Sombrerete,Fresnillo,Zacatecas,Luis Moya
 MEX-54|Zacatecas - Saltillo|Zacatecas,Concepcion del Oro
@@ -531,14 +531,14 @@ MEX-37|Uruapan - Lazaro Cardenas|Uruapan,Nueva Italia,Lazaro Cardenas
 MEX-45|Bajio|Celaya,Salamanca,Irapuato,Silao,Leon
 @QUE|Querétaro|ਕੇਰੇਤਾਰੋ|https://www.gob.mx/guardianacional
 MEX-57|Carretera Federal 57|Queretaro,San Juan del Rio
-MEX-45|Bajio|Queretaro,Apaseo el Alto
+MEX-45|Bajio|Queretaro,Corregidora@20.54/-100.44
 MEX-120|Sierra Gorda|San Juan del Rio,Cadereyta de Montes,Jalpan
 @HID|Hidalgo|ਹਿਡਾਲਗੋ|https://www.gob.mx/guardianacional
 MEX-85|Carretera Federal 85|Pachuca,Actopan,Ixmiquilpan,Zimapan,Jacala
 MEX-130|Pachuca - Tulancingo|Pachuca,Tulancingo
 @MEX|State of Mexico|ਮੈਕਸੀਕੋ ਸਟੇਟ|https://www.gob.mx/guardianacional
 MEX-15|Toluca|Villa Victoria,Toluca,Lerma
-MEX-55|Atlacomulco - Toluca|Atlacomulco,Ixtlahuaca,Toluca
+MEX-55|Atlacomulco - Toluca|Atlacomulco@19.80/-99.88,Ixtlahuaca@19.57/-99.77,Toluca
 MEX-57|Mexico - Queretaro|Tepotzotlan,Cuautitlan Izcalli
 MEX-85|Mexico - Pachuca|Tecamac,Ojo de Agua
 MEX-150|Mexico - Puebla|Ixtapaluca,Chalco
@@ -552,18 +552,18 @@ MEX-200|Costa Grande / Chica|Zihuatanejo,Petatlan,Tecpan de Galeana,Acapulco,Cru
 @TLA|Tlaxcala|ਤਲਾਕਸਕਾਲਾ|https://www.gob.mx/guardianacional
 MEX-136|Tlaxcala - Huamantla|Tlaxcala,Apizaco,Huamantla
 @PUE|Puebla|ਪੁਏਬਲਾ|https://www.gob.mx/guardianacional
-MEX-150|Mexico - Veracruz|San Martin Texmelucan,Puebla,Amozoc,Palmar de Bravo,Esperanza
-MEX-190|Puebla - Oaxaca|Puebla,Atlixco,Izucar de Matamoros,Acatlan de Osorio
+MEX-150|Mexico - Veracruz|San Martin Texmelucan,Puebla@19.04/-98.21,Amozoc,Palmar de Bravo,Esperanza
+MEX-190|Puebla - Oaxaca|Puebla@19.04/-98.21,Atlixco,Izucar de Matamoros,Acatlan de Osorio
 @VER|Veracruz|ਵੇਰਾਕਰੂਜ਼|https://www.gob.mx/guardianacional
 MEX-180|Golfo|Tuxpan,Poza Rica,Papantla,Nautla,Veracruz,Alvarado,San Andres Tuxtla,Acayucan,Coatzacoalcos
 MEX-150|Cumbres de Maltrata|Orizaba,Cordoba,Veracruz
 MEX-140|Perote - Xalapa|Perote,Xalapa,Veracruz
 @OAX|Oaxaca|ਓਆਹਾਕਾ|https://www.gob.mx/guardianacional
-MEX-190|Panamericana|Huajuapan de Leon,Nochixtlan,Oaxaca,Mitla,Santo Domingo Tehuantepec,Juchitan de Zaragoza
+MEX-190|Panamericana|Huajuapan de Leon@17.80/-97.78,Nochixtlan@17.46/-97.22,Oaxaca@17.06/-96.72,Mitla,Santo Domingo Tehuantepec,Juchitan de Zaragoza
 MEX-200|Costa|Pinotepa Nacional,Puerto Escondido,San Pedro Pochutla,Salina Cruz
-MEX-175|Sierra Sur|Oaxaca,Miahuatlan de Porfirio Diaz,San Pedro Pochutla
+MEX-175|Sierra Sur|Oaxaca@17.06/-96.72,Miahuatlan de Porfirio Diaz,San Pedro Pochutla
 @CHP|Chiapas|ਚਿਆਪਾਸ|https://www.gob.mx/guardianacional
-MEX-190|Panamericana|Cintalapa,Tuxtla Gutierrez,San Cristobal de las Casas,Comitan
+MEX-190|Panamericana|Cintalapa@16.69/-93.72,Tuxtla Gutierrez,San Cristobal de las Casas,Comitan
 MEX-200|Costa|Arriaga,Tonala,Pijijiapan,Huixtla,Tapachula
 @TAB|Tabasco|ਤਬਾਸਕੋ|https://www.gob.mx/guardianacional
 MEX-180|Golfo|Cardenas,Villahermosa,Frontera

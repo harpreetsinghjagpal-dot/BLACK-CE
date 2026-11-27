@@ -10,6 +10,16 @@ SH = json.load(open("/home/claude/usb/us_shapes.json"))
 ROADS = json.load(open("/home/claude/usb/us_roads.json"))
 ADM = json.load(open("/home/claude/usb/dl/adm1.geojson"))
 POLY = {}
+MXA = json.load(open(B + "/mx_query.json"))["states"]
+ADM10 = json.load(open("/home/claude/usb/dl/adm1_10m.geojson"))
+for f in ADM10["features"]:
+    pr = f["properties"]
+    if pr.get("iso_a2") == "MX":
+        code = str(pr.get("iso_3166_2", "")).replace("MX-", "")
+        if code in MXA:
+            g = f["geometry"]
+            POLY[code] = g["coordinates"] if g["type"] == "MultiPolygon" else [g["coordinates"]]
+del ADM10
 for f in ADM["features"]:
     if f["properties"].get("iso_a2") == "US":
         g = f["geometry"]
@@ -101,6 +111,25 @@ def wx_row(d):
             pm, round(pp, 1), None if fm == 99 else fm, fc_peak(h, c["time"])]
 
 
+def dp(pts, tol):
+    if len(pts) < 3: return pts
+    a, b = pts[0], pts[-1]
+    if a == b:
+        i = max(range(len(pts)), key=lambda k: (pts[k][0]-a[0])**2 + (pts[k][1]-a[1])**2)
+        return dp(pts[:i+1], tol)[:-1] + dp(pts[i:], tol)
+    dx, dy = b[0]-a[0], b[1]-a[1]; L = math.hypot(dx, dy)
+    im, dm = 0, -1
+    for i in range(1, len(pts)-1):
+        q = pts[i]; d = abs(dy*q[0]-dx*q[1]+b[0]*a[1]-b[1]*a[0])/L
+        if d > dm: dm, im = d, i
+    if dm <= tol: return [a, b]
+    return dp(pts[:im+1], tol)[:-1] + dp(pts[im:], tol)
+for code in MXA:
+    polys = POLY.get(code, [])
+    big = sorted(polys, key=lambda p: -len(p[0]))
+    sh = [[[round(x, 2), round(y, 2)] for x, y in dp([tuple(q) for q in p[0]], 0.025)] for p in big if len(p[0]) > 20]
+    ov = [[[round(x, 2), round(y, 2)] for x, y in dp([tuple(q) for q in p[0]], 0.12)] for p in big if len(p[0]) > 60]
+    SH[code] = {"shape": [r for r in sh if len(r) > 4], "over": [r for r in ov if len(r) > 4]}
 WX = json.load(open(O + "/wx.json")) if os.path.exists(O + "/wx.json") else {}
 NEUTRAL = [5, 0, 3, 80, 10, 1, 6, 0, 2, None]  # mild placeholder until live weather arrives
 
@@ -245,7 +274,8 @@ for c, s in T.items():
     shp = SH.get(c, {})
     out["order"].append(c)
     out["p"][c] = {"pa": s["pa"], "en": s["en"], "link": s["link"], "camurl": camurl.get(c, "{id}"), "towns": towns, "hw": hw,
-                   "cams": CAMS.get(c, []), "shape": [[[x, y] for x, y in r] for r in shp.get("shape", [])], "us": 1}
+                   "cams": CAMS.get(c, []), "shape": [[[x, y] for x, y in r] for r in shp.get("shape", [])], "us": 1,
+                   "cc": "MX" if c in MXA else "US", "alt": MXA.get(c, [])}
     out["over"][c] = [[[x, y] for x, y in r] for r in shp.get("over", [])]
 
 # ---------- links between states/provinces ----------
@@ -267,7 +297,16 @@ MAN = [  # Canada <-> USA border crossings, and US gaps the highway lists do not
     ["CT", "Greenwich", "NY", "New York", 45], ["NH", "Littleton", "VT", "Saint Johnsbury", 35], ["ME", "Bethel", "NH", "Gorham", 35],
     ["WA", "Kennewick", "OR", "Hermiston", 50], ["WA", "Pullman", "ID", "Moscow", 15], ["KS", "Liberal", "OK", "Guymon", 65],
     ["UT", "Green River", "CO", "Fruita", 160], ["MD", "Washington", "VA", "Arlington", 6], ["PA", "Philadelphia", "NJ", "Cherry Hill", 15],
-    ["PA", "Easton", "NJ", "Phillipsburg", 3], ["MO", "Saint Louis", "IL", "East Saint Louis", 5], ["KY", "Louisville", "IN", "Jeffersonville", 5],
+    ["PA", "Easton", "NJ", "Phillipsburg", 3],
+    ["BCN", "Tijuana", "CA", "San Diego", 30], ["BCN", "Mexicali", "CA", "El Centro", 20], ["SON", "San Luis Rio Colorado", "AZ", "Yuma", 40],
+    ["SON", "Nogales", "AZ", "Nogales", 3], ["CHH", "Ciudad Juarez", "TX", "El Paso", 5], ["TAM", "Nuevo Laredo", "TX", "Laredo", 3],
+    ["ZAC", "Concepcion del Oro", "COA", "Saltillo", 120], ["TAM", "Tampico", "VER", "Tuxpan", 190], ["YUC", "Valladolid", "ROO", "Cancun", 160],
+    ["CAM", "Xpujil", "ROO", "Chetumal", 120], ["MEX", "Lerma", "DIF", "Mexico City", 45], ["MEX", "Cuautitlan Izcalli", "DIF", "Mexico City", 35],
+    ["MEX", "Tecamac", "DIF", "Mexico City", 40], ["MEX", "Ixtapaluca", "DIF", "Mexico City", 30], ["JAL", "Cihuatlan", "COL", "Manzanillo", 60],
+    ["MIC", "Lazaro Cardenas", "GRO", "Zihuatanejo", 120], ["OAX", "Juchitan de Zaragoza", "CHP", "Cintalapa", 170], ["OAX", "Salina Cruz", "CHP", "Arriaga", 210],
+    ["TLA", "Tlaxcala", "PUE", "Puebla", 35], ["VER", "Perote", "PUE", "Amozoc", 120], ["SLP", "Ciudad Valles", "TAM", "Tampico", 140],
+    ["SLP", "Ciudad Valles", "TAM", "Ciudad Mante", 110], ["SLP", "Matehuala", "COA", "Saltillo", 260], ["NLE", "Cadereyta Jimenez", "TAM", "Reynosa", 170],
+    ["BCN", "El Rosario", "BCS", "Guerrero Negro", 360], ["QUE", "Queretaro", "GUA", "Celaya", 50], ["HID", "Pachuca", "MEX", "Tecamac", 50], ["NLE", "Sabinas Hidalgo", "TAM", "Nuevo Laredo", 120], ["MO", "Saint Louis", "IL", "East Saint Louis", 5], ["KY", "Louisville", "IN", "Jeffersonville", 5],
 ]
 CAN = json.load(open("/home/claude/usb/can_towns.json"))
 ok = []
