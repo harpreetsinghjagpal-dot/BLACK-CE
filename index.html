@@ -402,7 +402,7 @@ const bearing=(a,b,c,d)=>{const r=Math.PI/180,y=Math.sin((d-b)*r)*Math.cos(c*r),
 function locate(la,lo,hd,acc){let best=null;
   for(const c of D.order){const p=D.p[c];p.H.forEach((h,hi)=>{for(let j=0;j<h.towns.length-1;j++){const A=p.T[h.towns[j]],B=p.T[h.towns[j+1]],r=segDist(la,lo,A,B);if(!best||r.d<best.d)best={prov:c,hi,j,d:r.d,t:r.t,A,B}}})}
   const p=D.p[best.prov];let near=null,nd=1e9;for(const t of p.T){const d=km(la,lo,t.la,t.lo);if(d<nd){nd=d;near=t}}
-  let ahead=null;if(hd!=null){const dA=Math.abs(((bearing(la,lo,best.A.la,best.A.lo)-hd+540)%360)-180),dB=Math.abs(((bearing(la,lo,best.B.la,best.B.lo)-hd+540)%360)-180);ahead=dA<dB?best.A:best.B}
+  let ahead=null;if(hd!=null&&best.d<5){const dA=Math.abs(((bearing(la,lo,best.A.la,best.A.lo)-hd+540)%360)-180),dB=Math.abs(((bearing(la,lo,best.B.la,best.B.lo)-hd+540)%360)-180);ahead=dA<dB?best.A:best.B}
   return {...best,la,lo,hd,acc,near,nd,ahead}}
 function gpsRb(bar){let rb=$("gpsrb");if(!rb){bar.innerHTML='<div id="gpsinfo"></div><div class="rb" id="gpsrb" hidden></div>';rb=$("gpsrb")}
   if(!GPS){rb.hidden=true;return}const p=D.p[GPS.prov];let h=ROAD&&ROAD.on&&ROAD.no&&p.H.find(x=>x.no===ROAD.no);if(!h)h=p.H[GPS.hi];if(!h){rb.hidden=true;return}
@@ -712,6 +712,26 @@ $("dstb").addEventListener("click",()=>{DST.open=!DST.open;if(DST.open&&DST.to)D
 {const _p=prep;prep=function(){_p();if(DST.open)setTimeout(dstRender,0)}}
 {let lastK="";const _g=gpsBar;gpsBar=function(){_g.apply(this,arguments);if(DST.open&&DST.from==="gps"){const k=dStart();if(k&&k!==lastK){lastK=k;dstRender()}}}}
 {const _a=applyStatic;applyStatic=function(){_a();dstRender()}}
+// Live location: when no listed town is close, find the real place on the map and add it.
+const GPL={la:null,lo:null,t:0,busy:false};
+async function gpsPlace(){if(!GPS||!D||GPL.busy||GPS.nd<8)return;const now=Date.now();
+  if(GPL.la!=null&&km(GPL.la,GPL.lo,GPS.la,GPS.lo)<4&&now-GPL.t<30*60e3)return;if(now-GPL.t<60e3)return;
+  GPL.busy=true;GPL.t=now;GPL.la=GPS.la;GPL.lo=GPS.lo;const la=GPS.la,lo=GPS.lo;
+  try{let c=null,n=null,pla=null,plo=null;
+    const a=await fetch("https://api.bigdatacloud.net/data/reverse-geocode-client?localityLanguage=en&latitude="+la+"&longitude="+lo).then(r=>r.ok?r.json():null).catch(()=>null);
+    if(a&&a.countryCode==="CA"){c=String(a.principalSubdivisionCode||"").replace("CA-","");n=a.city||a.locality}
+    if(!c||!n){const b=await fetch("https://nominatim.openstreetmap.org/reverse?format=jsonv2&zoom=14&accept-language=en&lat="+la+"&lon="+lo).then(r=>r.ok?r.json():null).catch(()=>null);
+      const ad=b&&b.address;if(ad&&ad.country_code==="ca"){c=String(ad["ISO3166-2-lvl4"]||"").replace("CA-","");n=ad.city||ad.town||ad.village||ad.hamlet||ad.municipality}}
+    n=n&&String(n).replace(/^(Town|City|Village|Municipal District|County) of /i,"").trim().slice(0,60);
+    if(!c||!n||!D.p[c]||/county|district|improvement|unorganized|no\. ?\d/i.test(n))return;
+    const p=D.p[c],nz=x=>String(x).normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();if(p.T.some(t=>nz(t.n)===nz(n)))return;
+    if(GPS&&km(la,lo,GPS.la,GPS.lo)>20)return;
+    const g=n?await fetch("https://geocoding-api.open-meteo.com/v1/search?count=10&language=en&format=json&countryCode=CA&name="+encodeURIComponent(n)).then(r=>r.ok?r.json():null).catch(()=>null):null;
+    for(const x of (g&&g.results)||[]){if(isFinite(x.latitude)&&km(la,lo,x.latitude,x.longitude)<25){pla=x.latitude;plo=x.longitude;break}}
+    if(pla==null){pla=la;plo=lo}
+    XT.push([c,n,+(+pla).toFixed(3),+(+plo).toFixed(3)]);XT=XT.slice(-200);try{localStorage.setItem(XT_KEY,JSON.stringify(XT))}catch(e){}
+    xtInject(D);reDraw();liveWx()}finally{GPL.busy=false}}
+{const _f=onFix;onFix=function(){_f.apply(this,arguments);gpsPlace()}}
 dstRender();
 loadData().then(d=>{D=d;try{xtInject(D)}catch(e){}prep();updLabel();route();afterLoad()}).catch(()=>{$("upd").textContent=tx("loadFail")});
 }
